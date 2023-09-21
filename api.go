@@ -17,7 +17,7 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 	fmt.Println(url)
 
 	client := http.Client{}
-	req, err := http.NewRequest("GET", url, strings.NewReader(params.Encode()))
+	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", "Bearer " + config.PermAccessToken)
 	res, err := client.Do(req)
 	if err != nil { fmt.Println("Request Error:", err) }
