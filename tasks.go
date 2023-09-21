@@ -2,7 +2,7 @@ package wrikego
 
 import (
 	"net/url"
-	types "wrikego/types"
+	types "github.com/TGoers-FNSB/WrikeGo/types"
 )
 
 func QueryTasks_Get_Tasks(config *Config, params url.Values) (types.Tasks, error) {
