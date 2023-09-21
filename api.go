@@ -15,17 +15,13 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 
 	fmt.Println(url)
 
-	res, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		fmt.Println("Request Error:", err)
-	}
+	res, err := http.Get(url)
+	if err != nil { fmt.Println("Request Error:", err) }
 	defer res.Body.Close()
 
 	fmt.Println("A")
 	response, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println("io.ReadAll Error:", err)
-	}
+	if err != nil { fmt.Println("io.ReadAll Error:", err) }
 
 	fmt.Println("B")
 
