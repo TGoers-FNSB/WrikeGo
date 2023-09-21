@@ -1,7 +1,6 @@
 package wrikego
 
 import (
-	"fmt"
 	"net/url"
 
 	types "github.com/TGoers-FNSB/WrikeGo/types"
@@ -10,8 +9,7 @@ import (
 func QueryTasks_Get_Tasks(config Config, params url.Values) (types.Tasks, error) {
 	path := "/tasks"
 
-	response, err := Get(config, path, params)
-	fmt.Println(err)
+	response, _ := Get(config, path, params)
 
 	return types.TasksFromJSON(response)
 
