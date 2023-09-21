@@ -5,16 +5,11 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 func Get(config Config, path string, params url.Values) ([]byte, error) {
 	url := config.BaseUrl + path
-	if params != nil {
-		url += fmt.Sprintf("?%s", params.Encode())
-	}
-
-	fmt.Println(url)
+	if params != nil { url += fmt.Sprintf("?%s", params.Encode()) }
 
 	client := http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
@@ -25,11 +20,6 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 
 	response, err := io.ReadAll(res.Body)
 	if err != nil { fmt.Println("io.ReadAll Error:", err) }
-
-	fmt.Println(string(response))
-	fmt.Println(req.RequestURI)
-	fmt.Println(strings.NewReader(params.Encode()))
-	fmt.Println(url)
 
 	return response, err
 }
