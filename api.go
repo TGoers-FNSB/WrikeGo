@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-func Get(config *Config, path string, params url.Values) ([]byte, error) {
+func Get(config Config, path string, params url.Values) ([]byte, error) {
 	url := config.BaseUrl + path
 	if params != nil { url += fmt.Sprintf("?%s", params.Encode())}
 
