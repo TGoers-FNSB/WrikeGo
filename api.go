@@ -14,5 +14,8 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 	res, err := http.NewRequest("GET", url, nil)
 	if err != nil { return nil, err }
 
-	return io.ReadAll(res.Body)
+	response, err := io.ReadAll(res.Body)
+	if err != nil { return nil, err }
+
+	return response, err
 }
