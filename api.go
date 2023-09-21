@@ -10,9 +10,9 @@ import (
 
 func Get(config Config, path string, params url.Values) ([]byte, error) {
 	url := config.BaseUrl + path
-	// if params != nil {
-	// 	url += fmt.Sprintf("?%s", params.Encode())
-	// }
+	if params != nil {
+		url += fmt.Sprintf("?%s", params.Encode())
+	}
 
 	fmt.Println(url)
 
@@ -29,6 +29,7 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 	fmt.Println(string(response))
 	fmt.Println(req.RequestURI)
 	fmt.Println(strings.NewReader(params.Encode()))
+	fmt.Println(url)
 
 	return response, err
 }
