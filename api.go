@@ -16,16 +16,12 @@ func Get(config Config, path string, params url.Values) ([]byte, error) {
 	fmt.Println(url)
 
 	res, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
+	defer res.Body.Close()
 
 	fmt.Println("A")
-
 	response, err := io.ReadAll(res.Body)
-	if err != nil {
-		return nil, err
-	}
+	if err != nil { return nil, err }
 
 	fmt.Println("B")
 
