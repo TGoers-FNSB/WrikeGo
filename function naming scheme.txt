@@ -1,0 +1,3 @@
+[Section][Wrike Method[s]][In[(folder / space)]][ById[s]]
+
+- Add trailing "s" if function will change multiple items at once.
