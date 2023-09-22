@@ -29,6 +29,7 @@ name: Create Release
     
 on:
   push:
+    branches: [ main ]
     tags:
       - 'v*'
 
