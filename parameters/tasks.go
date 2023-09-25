@@ -1,39 +1,5 @@
 package wrikeparams
 
-type DateOrRange struct {
-	Start string `url:"start,omitempty"`
-	End   string `url:"end,omitempty"`
-	Equal string `url:"equal,omitempty"`
-}
-type TaskDates struct {
-	Type           string `url:"type,omitempty"`
-	Duration       int    `url:"duration,omitempty"`
-	Start          string `url:"start,omitempty"`
-	Due            string `url:"due,omitempty"`
-	WorkOnWeekends bool   `url:"workOnWeekends,omitempty"`
-}
-
-type Metadata struct {
-	Key   string `url:"key,omitempty"`
-	Value string `url:"value,omitempty"`
-}
-
-type CustomField struct {
-	ID         string   `url:"id,omitempty"`
-	Comparator string   `url:"comparator,omitempty"`
-	Value      string   `url:"value,omitempty"`
-	MinValue   string   `url:"minValue,omitempty"`
-	MaxValue   string   `url:"maxValue,omitempty"`
-	Values     []string `url:"values,omitempty"`
-}
-
-type EffortAllocation struct {
-	AllocatedEffort           int    `url:"allocatedEffort,omitempty"`
-	DailyAllocationPercentage int    `url:"dailyAllocationPercentage,omitempty"`
-	Mode                      string `url:"mode,omitempty"`
-	TotalEffort               int    `url:"totalEffort,omitempty"`
-}
-
 type QueryTasks struct {
 	Descendants    bool        `url:"descendants,omitempty"`
 	Title          string      `url:"title,omitempty"`

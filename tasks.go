@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
-	types "github.com/TGoers-FNSB/WrikeGo/types"
+	types "github.com/TGoers-FNSB/WrikeGo/response"
 	query "github.com/google/go-querystring/query"
 )
 
@@ -40,7 +40,7 @@ func QueryTasksInSpace(config Config, params params.QueryTasks, pathId string) (
 	return types.TasksFromJSON(response)
 }
 
-func QueryTasksByIDs(config Config, params params.QueryTasks, pathId []string) (types.Tasks, error) {
+func QueryTasksByIds(config Config, params params.QueryTasks, pathId []string) (types.Tasks, error) {
 	path := fmt.Sprintf("/tasks/%s", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
