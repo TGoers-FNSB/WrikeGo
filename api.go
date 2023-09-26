@@ -19,8 +19,8 @@ func Put(config Config, path string, params url.Values) ([]byte, error) {
 	return api("PUT", config, path, params)
 }
 
-func Delete(config Config, path string) ([]byte, error) {
-	return api("DELETE", config, path, nil)
+func Delete(config Config, path string, params url.Values) ([]byte, error) {
+	return api("DELETE", config, path, params)
 }
 
 func api(method string, config Config, path string, params url.Values) ([]byte, error) {
@@ -42,5 +42,6 @@ func api(method string, config Config, path string, params url.Values) ([]byte, 
 	if err != nil {
 		fmt.Println("io.ReadAll Error:", err)
 	}
+	fmt.Println(string(response))
 	return response, err
 }

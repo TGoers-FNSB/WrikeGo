@@ -6,112 +6,112 @@ import (
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
-	types "github.com/TGoers-FNSB/WrikeGo/response"
+	resp "github.com/TGoers-FNSB/WrikeGo/response"
 	query "github.com/google/go-querystring/query"
 )
 
-func QueryFolders(config Config, params params.QueryFolders) (types.Folders, error) {
+func QueryFolders(config Config, params params.QueryFolders) (resp.Folders, error) {
 	path := "/folders"
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Get(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersInFolder(config Config, params params.QueryFolders, pathId string) (types.Folders, error) {
+func QueryFoldersInFolder(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Get(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersInSpace(config Config, params params.QueryFolders, pathId string) (types.Folders, error) {
+func QueryFoldersInSpace(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/spaces/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Get(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersFieldsHistoryByIds(config Config, params params.QueryFolders, pathId []string) (types.Folders, error) {
+func QueryFoldersFieldsHistoryByIds(config Config, params params.QueryFolders, pathId []string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders_history", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Get(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []string) (types.Folders, error) {
+func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Get(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func CreateFolderInFolder(config Config, params params.CreateFolders, pathId string) (types.Folders, error) {
+func CreateFolderInFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Post(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func CreateFolderCopyById(config Config, params params.CreateFoldersCopy, pathId string) (types.Folders, error) {
+func CreateFolderCopyById(config Config, params params.CreateFoldersCopy, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/copy_folders/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Post(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func CreateFolderCopyAsyncById(config Config, params params.CreateFoldersCopy, pathId string) (types.Folders, error) {
+func CreateFolderCopyAsyncById(config Config, params params.CreateFoldersCopy, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/copy_folders_async/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Post(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func ModifyFolderById(config Config, params params.ModifyFolders, pathId string) (types.Folders, error) {
+func ModifyFolderById(config Config, params params.ModifyFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Put(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func ModifyFoldersByIds(config Config, params params.ModifyFolders, pathId []string) (types.Folders, error) {
+func ModifyFoldersByIds(config Config, params params.ModifyFolders, pathId []string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}
 	response, _ := Put(config, path, body)
-	return types.FoldersFromJSON(response)
+	return resp.FoldersFromJSON(response)
 }
 
-func DeleteFolderById(config Config, pathId string) (types.Tasks, error) {
+func DeleteFolderById(config Config, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/folders/%s", pathId)
-	response, _ := Delete(config, path)
-	return types.TasksFromJSON(response)
+	response, _ := Delete(config, path, nil)
+	return resp.TasksFromJSON(response)
 }

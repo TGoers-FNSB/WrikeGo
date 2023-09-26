@@ -47,6 +47,11 @@ type Project struct {
 	EndDate        string   `url:"endDate,omitempty"`
 	ContractType   string   `url:"contractType,omitempty"`
 	Budget         float64  `url:"budget,omitempty"`
-	OwnersAdd       []string `url:"ownersAdd,omitempty"`
-	OwnersRemove       []string `url:"ownersRemove,omitempty"`
+	OwnersAdd      []string `url:"ownersAdd,omitempty"`
+	OwnersRemove   []string `url:"ownersRemove,omitempty"`
+}
+
+type Avatar struct {
+	Letters string `url:"letters,omitempty"`
+	Color   string `url:"color,omitempty"`
 }
