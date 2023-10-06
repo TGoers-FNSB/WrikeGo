@@ -41,7 +41,7 @@ func ModifyUserScheduleExceptions(config Config, params params.ModifyUserSchedul
 	if err != nil {
 		log.Println(err)
 	}
-	response, _ := Post(config, path, body)
+	response, _ := Put(config, path, body)
 	return resp.UserScheduleExceptionsFromJSON(response)
 }
 

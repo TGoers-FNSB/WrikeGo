@@ -92,6 +92,6 @@ func ModifyTimelogsByTask(config Config, params params.ModifyTimelogs, pathId st
 
 func DeleteTimelogsById(config Config, pathId string) (resp.Timelogs, error) {
 	path := fmt.Sprintf("/timelogs/%s", pathId)
-	response, _ := Put(config, path, nil)
+	response, _ := Delete(config, path, nil)
 	return resp.TimelogsFromJSON(response)
 }
