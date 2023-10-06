@@ -21,7 +21,7 @@ func CreateInvitation(config Config, params params.CreateInvitations) (resp.Invi
 	if err != nil {
 		log.Println(err)
 	}
-	response, _ := Get(config, path, body)
+	response, _ := Post(config, path, body)
 	return resp.InvitationsFromJSON(response)
 }
 

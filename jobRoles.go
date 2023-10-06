@@ -44,6 +44,6 @@ func ModifyJobRoles(config Config, params params.ModifyJobRoles, pathId string) 
 
 func DeleteJobRoles(config Config, pathId string) (resp.JobRoles, error) {
 	path := fmt.Sprintf("/jobroles/%s", pathId)
-	response, _ := Put(config, path, nil)
+	response, _ := Delete(config, path, nil)
 	return resp.JobRolesFromJSON(response)
 }

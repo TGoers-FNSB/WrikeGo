@@ -45,7 +45,7 @@ func ModifyWorkSchedulesById(config Config, params params.ModifyWorkSchedules, p
 	if err != nil {
 		log.Println(err)
 	}
-	response, _ := Get(config, path, body)
+	response, _ := Put(config, path, body)
 	return resp.WorkSchedulesFromJSON(response)
 }
 
