@@ -11,7 +11,7 @@ func AccountFromJSON(data []byte) (Account, error) {
 type Account struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id             string   `json:"id"`
+		Id             string   `json:"Id"`
 		Name           string   `json:"name"`
 		DateFormat     string   `json:"dateFormat"`
 		FirstDayOfWeek string   `json:"firstDayOfWeek"`
@@ -30,8 +30,8 @@ type Account struct {
 			Value string `json:"value"`
 		} `json:"metadata"`
 		CustomFields []struct {
-			ID        string   `json:"id"`
-			AccountID string   `json:"accountId"`
+			Id        string   `json:"Id"`
+			AccountId string   `json:"accountId"`
 			Title     string   `json:"title"`
 			Type      string   `json:"type"`
 			SpaceId   string   `json:"spaceId"`

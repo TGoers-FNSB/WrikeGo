@@ -16,7 +16,7 @@ type Contacts struct {
 		LastName  string `json:"lastName,omitempty"`
 		Type      string `json:"type,omitempty"`
 		Profiles  []struct {
-			AccountID string `json:"accountId,omitempty"`
+			AccountId string `json:"accountId,omitempty"`
 			Role      string `json:"role,omitempty"`
 			External  bool   `json:"external,omitempty"`
 			Admin     bool   `json:"admin,omitempty"`

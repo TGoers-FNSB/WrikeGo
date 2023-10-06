@@ -17,7 +17,7 @@ type Workflows struct {
 		Standard       bool   `json:"standard"`
 		Hidden         bool   `json:"hidden"`
 		CustomStatuses []struct {
-			ID           string `json:"id"`
+			Id           string `json:"id"`
 			Name         string `json:"name"`
 			StandardName bool   `json:"standardName"`
 			Color        string `json:"color"`
