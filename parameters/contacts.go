@@ -1,7 +1,7 @@
 package wrikeparams
 
 type QueryContacts struct {
-	Me          *bool        `url:"me,omitempty"` // Required in some queries
+	Me          *bool        `url:"me,omitempty"` //! Required in some queries
 	Metadata    *Metadata    `url:"metadata,omitempty"`
 	Deleted     *bool        `url:"deleted,omitempty"`
 	Fields      *[]string    `url:"fields,omitempty"`
@@ -9,13 +9,13 @@ type QueryContacts struct {
 }
 
 type ModifyContacts struct {
-	Metadata        *Metadata `url:"metadata,omitempty"`
+	Metadata        *[]Metadata `url:"metadata,omitempty"`
 	CurrentBillRate *struct {
-		RateSource *string `url:"rateSource,omitempty"`
+		RateSource string `url:"rateSource"`
 		RateValue  *string `url:"rateValue,omitempty"`
 	} `url:"currentBillRate,omitempty"`
 	CurrentCostRate *struct {
-		RateSource *string `url:"rateSource,omitempty"`
+		RateSource string `url:"rateSource"`
 		RateValue  *string `url:"rateValue,omitempty"`
 	} `url:"currentCostRate,omitempty"`
 	JobRoleId *string   `url:"jobRoleId,omitempty"`

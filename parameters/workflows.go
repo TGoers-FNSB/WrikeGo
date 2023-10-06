@@ -7,8 +7,8 @@ type CreateWorkflows struct {
 type ModifyWorkflows struct {
 	Name         *string `url:"name,omitempty"`
 	Hidden       *bool   `url:"hidden,omitempty"`
-	CustomStatus *struct {
-		ID           *string `url:"id,omitempty"`
+	CustomStatus *struct { //? Check on struct structure
+		Id           *string `url:"id,omitempty"`
 		Name         *string `url:"name,omitempty"`
 		StandardName *bool   `url:"standardName,omitempty"`
 		Color        *string `url:"color,omitempty"`

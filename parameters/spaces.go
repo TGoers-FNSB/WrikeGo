@@ -24,8 +24,8 @@ type CreateSpaces struct {
 }
 
 type ModifySpaces struct {
-	AccessType  *string `url:"accessType"`
-	Title       *string `url:"title"`
+	AccessType  *string `url:"accessType,omitempty"`
+	Title       *string `url:"title,omitempty"`
 	Description *string `url:"description,omitempty"`
 	MembersAdd  *[]struct {
 		Id           string `url:"id"`

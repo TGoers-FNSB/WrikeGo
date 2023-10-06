@@ -11,7 +11,7 @@ type CreateInvitations struct {
 }
 
 type ModifyInvitaions struct {
-	Resend   *string `url:"resend,omitempty"`
+	Resend   *bool   `url:"resend,omitempty"`
 	Role     *string `url:"role,omitempty"`
 	External *bool   `url:"external,omitempty"`
 }

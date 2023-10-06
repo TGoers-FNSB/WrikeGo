@@ -7,13 +7,13 @@ type QueryFolders struct {
 	CustomField   *CustomField `url:"customField,omitempty"`
 	UpdatedDate   *DateOrRange `url:"updatedDate,omitempty"`
 	Project       *bool        `url:"project,omitempty"`
-	Delete        *bool        `url:"deleted,omitempty"`
+	Deleted       *bool        `url:"deleted,omitempty"`
 	ContractTypes *[]string    `url:"contractTypes,omitempty"`
 	Fields        *[]string    `url:"fields,omitempty"`
 }
 
 type CreateFolders struct {
-	Title         string        `url:"title"`
+	Title         string         `url:"title"`
 	Description   *string        `url:"description,omitempty"`
 	Shareds       *[]string      `url:"shareds,omitempty"`
 	Metadata      *[]Metadata    `url:"metadata,omitempty"`
@@ -24,8 +24,8 @@ type CreateFolders struct {
 }
 
 type CreateFoldersCopy struct {
-	Parent             string   `url:"parent"`
-	Title              string   `url:"title"`
+	Parent             string    `url:"parent"`
+	Title              string    `url:"title"`
 	TitlePrefix        *string   `url:"titlePrefix,omitempty"`
 	CopyDescriptions   *bool     `url:"copyDescriptions,omitempty"`
 	CopyResponsibles   *bool     `url:"copyResponsibles,omitempty"`
@@ -47,6 +47,8 @@ type ModifyFolders struct {
 	Description        *string        `url:"description,omitempty"`
 	AddParents         *[]string      `url:"addParents,omitempty"`
 	RemoveParents      *[]string      `url:"removeParents,omitempty"`
+	AddShareds         *[]string      `url:"addShareds,omitempty"`
+	RemoveShareds      *[]string      `url:"removeShareds,omitempty"`
 	Metadata           *[]Metadata    `url:"metadata,omitempty"`
 	Restore            *bool          `url:"restore,omitempty"`
 	CustomFields       *[]CustomField `url:"customFields,omitempty"`

@@ -9,5 +9,5 @@ type QueryCustomItemTypes struct {
 type CreateWorkFromCustomItemType struct {
 	SuperTaskId *string `url:"superTaskId,omitempty"`
 	ParentId    *string `url:"parentId,omitempty"`
-	Title       *string `url:"title,omitempty"`
+	Title       string  `url:"title"`
 }

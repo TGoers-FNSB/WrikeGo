@@ -50,7 +50,7 @@ func QueryTasksByIds(config Config, params params.QueryTasks, pathId []string) (
 	return resp.TasksFromJSON(response)
 }
 
-func QueryTasksFieldsHistoryByIds(config Config, params params.QueryTasks, pathId []string) (resp.Tasks, error) {
+func QueryTasksFieldsHistoryByIds(config Config, params params.QueryTasksFieldsHistory, pathId []string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/tasks/%s/tasks_history", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
