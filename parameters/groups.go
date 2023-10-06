@@ -2,7 +2,7 @@ package wrikeparams
 
 type QueryGroups struct {
 	Metadata  *Metadata `url:"metadata,omitempty"`
-	PageSize  *float64  `url:"pageSize,omitempty"`
+	PageSize  *int      `url:"pageSize,omitempty"`
 	PageToken *string   `url:"pageToken,omitempty"`
 	Fields    *[]string `url:"fields,omitempty"`
 }

@@ -11,7 +11,7 @@ type DateOrRange struct {
 }
 
 type TaskDates struct {
-	Type           *string `url:"type,omitempty"`
+	Type           string  `url:"type"`
 	Duration       *int    `url:"duration,omitempty"`
 	Start          *string `url:"start,omitempty"`
 	Due            *string `url:"due,omitempty"`
@@ -19,24 +19,24 @@ type TaskDates struct {
 }
 
 type Metadata struct {
-	Key   *string `url:"key,omitempty"`
-	Value *string `url:"value,omitempty"`
+	Key   string `url:"key"`
+	Value string `url:"value"`
 }
 
 type CustomField struct {
-	Id         *string   `url:"id,omitempty"`
+	Id         string    `url:"id"`
 	Comparator *string   `url:"comparator,omitempty"`
-	Value      *string   `url:"value,omitempty"`
+	Value      string    `url:"value"`
 	MinValue   *string   `url:"minValue,omitempty"`
 	MaxValue   *string   `url:"maxValue,omitempty"`
 	Values     *[]string `url:"values,omitempty"`
 }
 
 type EffortAllocation struct {
-	AllocatedEffort           *int    `url:"allocatedEffort,omitempty"`
-	DailyAllocationPercentage *int    `url:"dailyAllocationPercentage,omitempty"`
-	Mode                      *string `url:"mode,omitempty"`
-	TotalEffort               *int    `url:"totalEffort,omitempty"`
+	AllocatedEffort           *int   `url:"allocatedEffort,omitempty"`
+	DailyAllocationPercentage *int   `url:"dailyAllocationPercentage,omitempty"`
+	Mode                      string `url:"mode"`
+	TotalEffort               *int   `url:"totalEffort,omitempty"`
 }
 
 type Project struct {
@@ -52,6 +52,6 @@ type Project struct {
 }
 
 type Avatar struct {
-	Letters *string `url:"letters,omitempty"`
-	Color   *string `url:"color,omitempty"`
+	Letters string `url:"letters"`
+	Color   string `url:"color"`
 }

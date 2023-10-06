@@ -6,10 +6,10 @@ type QueryUserScheduleExceptions struct {
 }
 
 type CreateUserScheduleExceptions struct {
-	UserId        string `url:"userId"`
-	FromDate      string `url:"fromDate"`
-	ToDate        string `url:"toDate"`
-	ExclusionType string `url:"exclusionType"`
+	UserId        interface{} `url:"userId"` //? Unknown datatype
+	FromDate      string      `url:"fromDate"`
+	ToDate        string      `url:"toDate"`
+	ExclusionType string      `url:"exclusionType"`
 }
 
 type ModifyUserScheduleExceptions struct {

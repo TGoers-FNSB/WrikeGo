@@ -13,35 +13,35 @@ type CreateBookings struct {
 		Duration       *int    `url:"duration,omitempty"`
 		StartDate      *string `url:"startDate,omitempty"`
 		FinishDate     *string `url:"finishDate,omitempty"`
-		WorkOnWeekends *bool   `url:"bookingDates,omitempty"`
+		WorkOnWeekends *bool   `url:"workOnWeekends,omitempty"`
 	} `url:"bookingDates"`
-	ResponsibleId            *[]string `url:"responsibleId,omitempty"`
-	ResponsiblePlaceholderId *[]string `url:"respopnsiblePlaceholderId,omitempty"`
+	ResponsibleId            *string `url:"responsibleId,omitempty"`
+	ResponsiblePlaceholderId *string `url:"respopnsiblePlaceholderId,omitempty"`
 	EffortAllocation         *struct {
 		ResponsibleAllocation *[]struct {
-			UserId          *string   `url:"userId,omitempty"`
-			PlaceholderId   *string   `url:"placeholderId,omitempty"`
-			DailyAllocation *[]string `url:"dailyAllocation"`
+			UserId          *string  `url:"userId,omitempty"`
+			PlaceholderId   *string  `url:"placeholderId,omitempty"`
+			DailyAllocation []string `url:"dailyAllocation"` //? Data Type
 		} `url:"responsibleAllocation,omitempty"`
 		Mode        string `url:"mode"`
 		TotalEffort *int   `url:"totalEffort,omitempty"`
 	} `url:"effortAllocation,omitempty"`
 }
 
-type ModifyBookings struct {
+type ModifyBookings *struct {
 	BookingDates struct {
 		Duration       *int    `url:"duration,omitempty"`
 		StartDate      *string `url:"startDate,omitempty"`
 		FinishDate     *string `url:"finishDate,omitempty"`
-		WorkOnWeekends *bool   `url:"bookingDates,omitempty"`
-	} `url:"bookingDates"`
-	ResponsibleId            *[]string `url:"responsibleId,omitempty"`
-	ResponsiblePlaceholderId *[]string `url:"respopnsiblePlaceholderId,omitempty"`
+		WorkOnWeekends *bool   `url:"workOnWeekends,omitempty"`
+	} `url:"bookingDates,omitempty"`
+	ResponsibleId            *string `url:"responsibleId,omitempty"`
+	ResponsiblePlaceholderId *string `url:"respopnsiblePlaceholderId,omitempty"`
 	EffortAllocation         *struct {
 		ResponsibleAllocation *[]struct {
 			UserId          *string   `url:"userId,omitempty"`
 			PlaceholderId   *string   `url:"placeholderId,omitempty"`
-			DailyAllocation *[]string `url:"dailyAllocation"`
+			DailyAllocation *[]string `url:"dailyAllocation"` //? Data Type
 		} `url:"responsibleAllocation,omitempty"`
 		Mode        string `url:"mode"`
 		TotalEffort *int   `url:"totalEffort,omitempty"`
