@@ -32,7 +32,7 @@ type Approvals struct {
 		AutoFinishOnReject  bool     `json:"autoFinishOnReject"`
 		Finished            bool     `json:"finished"`
 		FinisherId          string   `json:"finisherId"`
-		ID                  string   `json:"id"`
+		Id                  string   `json:"id"`
 		Status              string   `json:"status"`
 		FolderId            string   `json:"folderId,omitempty"`
 	} `json:"data"`

@@ -22,7 +22,7 @@ type DataExport struct {
 		} `json:"resources"`
 		Alias   string `json:"alias"`
 		Columns []struct {
-			ID         string `json:"id"`
+			Id         string `json:"id"`
 			Alias      string `json:"alias"`
 			DataType   string `json:"dataType"`
 			ForeignKey struct {

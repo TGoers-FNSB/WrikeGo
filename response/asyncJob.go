@@ -20,7 +20,7 @@ type AsyncJob struct {
 		ProcessedCount  int    `json:"processedCount"`
 		Type            string `json:"type"`
 		Result          struct {
-			FolderID string `json:"folderId"`
+			FolderId string `json:"folderId"`
 		} `json:"result"`
 		ErrorMessage string `json:"errorMessage"`
 	} `json:"data"`

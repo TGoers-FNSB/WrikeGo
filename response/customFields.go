@@ -11,8 +11,8 @@ func CustomFieldsFromJSON(data []byte) (CustomFields, error) {
 type CustomFields struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		ID        string        `json:"id"`
-		AccountID string        `json:"accountId"`
+		Id        string        `json:"id"`
+		AccountId string        `json:"accountId"`
 		Title     string        `json:"title"`
 		Type      string        `json:"type"`
 		SharedIds []interface{} `json:"sharedIds"`

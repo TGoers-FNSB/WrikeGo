@@ -11,12 +11,12 @@ func UsersFromJSON(data []byte) (Users, error) {
 type Users struct {
 	Kind string `json:"kind,omitempty"`
 	Data []struct {
-		ID        string `json:"id,omitempty"`
+		Id        string `json:"id,omitempty"`
 		FirstName string `json:"firstName,omitempty"`
 		LastName  string `json:"lastName,omitempty"`
 		Type      string `json:"type,omitempty"`
 		Profiles  []struct {
-			AccountID string `json:"accountId,omitempty"`
+			AccountId string `json:"accountId,omitempty"`
 			Email     string `json:"email,omitempty"`
 			Role      string `json:"role,omitempty"`
 			External  bool   `json:"external,omitempty"`

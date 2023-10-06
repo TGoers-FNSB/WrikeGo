@@ -53,7 +53,7 @@ type Tasks struct {
 			Value string `json:"value,omitempty"`
 		} `json:"metadata,omitempty"`
 		CustomFields []struct {
-			ID    string `json:"id,omitempty"`
+			Id    string `json:"id,omitempty"`
 			Value string `json:"value,omitempty"`
 		} `json:"customFields,omitempty"`
 		BillingType      string `json:"billingType,omitempty"`
@@ -70,7 +70,7 @@ type Tasks struct {
 			PlannedFees float64 `json:"plannedFees,omitempty"`
 			PlannedCost float64 `json:"plannedCost,omitempty"`
 		} `json:"finance,omitempty"`
-		CustomItemTypeID string  `json:"customItemTypeId,omitempty"`
+		CustomItemTypeId string  `json:"customItemTypeId,omitempty"`
 		ActualFees       float64 `json:"actualFees,omitempty"`
 		ActualCost       float64 `json:"actualCost,omitempty"`
 		PlannedFees      float64 `json:"plannedFees,omitempty"`

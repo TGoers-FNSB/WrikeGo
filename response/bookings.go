@@ -13,9 +13,9 @@ func BookingsFromJSON(data []byte) (Bookings, error) {
 type Bookings struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		ID            string `json:"id"`
-		FolderID      string `json:"folderId"`
-		ResponsibleID string `json:"responsibleId"`
+		Id            string `json:"id"`
+		FolderId      string `json:"folderId"`
+		ResponsibleId string `json:"responsibleId"`
 		BookingDates  struct {
 			Duration       int    `json:"duration"`
 			StartDate      string `json:"startDate"`
@@ -24,8 +24,8 @@ type Bookings struct {
 		} `json:"bookingDates"`
 		EffortAllocation struct {
 			ResponsibleAllocation []struct {
-				UserID          string        `json:"userId"`
-				DailyAllocation []interface{} `json:"dailyAllocation"`
+				UserId          string        `json:"userId"`
+				DailyAllocation []interface{} `json:"dailyAllocation"` //? Unknown data type
 			} `json:"responsibleAllocation"`
 			Mode        string `json:"mode"`
 			TotalEffort int    `json:"totalEffort"`

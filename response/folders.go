@@ -60,7 +60,7 @@ type Folders struct {
 			Value string `json:"value,omitempty"`
 		} `json:"metadata,omitempty"`
 		CustomFields []struct {
-			ID    string `json:"id,omitempty"`
+			Id    string `json:"id,omitempty"`
 			Value string `json:"value,omitempty"`
 		} `json:"customFields,omitempty"`
 		CustomColumnIds []string `json:"customColumnIds,omitempty"`
@@ -72,7 +72,7 @@ type Folders struct {
 		ProgressPercent	float64	`json:"progressPercent,omitempty"`
 		ProcessedCount	int	`json:"processedCount,omitempty"`
 		Type	string	`json:"type,omitempty"`
-		Result	interface{}	`json:"result,omitempty"`
+		Result	interface{}	`json:"result,omitempty"` //? Unknown data type
 		ErrorMessage	string	`json:"errorMessage,omitempty"`
 	} `json:"data,omitempty"`
 }

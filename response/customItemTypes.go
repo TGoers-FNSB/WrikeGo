@@ -16,7 +16,7 @@ type CustomItemTypes struct {
 		Id          string `json:"id"`
 		Title       string `json:"title"`
 		RelatedType string `json:"relatedType"`
-		SpaceID     string `json:"spaceId"`
+		SpaceId     string `json:"spaceId"`
 		Description string `json:"description"`
 	} `json:"data"`
 }
