@@ -13,22 +13,22 @@ func DataExportFromJSON(data []byte) (DataExport, error) {
 type DataExport struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id            string `json:"id"`
-		CompletedDate string `json:"completedDate"`
-		Status        string `json:"status"`
-		Resources     []struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"resources"`
-		Alias   string `json:"alias"`
-		Columns []struct {
-			Id         string `json:"id"`
-			Alias      string `json:"alias"`
-			DataType   string `json:"dataType"`
-			ForeignKey struct {
-				TableId  string `json:"tableId"`
-				ColumnId string `json:"columnId"`
-			} `json:"foreignKey"`
-		} `json:"columns"`
+		Id            *string `json:"id,omitempty"`
+		CompletedDate *string `json:"completedDate,omitempty"`
+		Status        *string `json:"status,omitempty"`
+		Resources     *[]struct {
+			Name *string `json:"name,omitempty"`
+			URL  *string `json:"url,omitempty"`
+		} `json:"resources,omitempty"`
+		Alias   *string `json:"alias,omitempty"`
+		Columns *[]struct {
+			Id         *string `json:"id,omitempty"`
+			Alias      *string `json:"alias,omitempty"`
+			DataType   *string `json:"dataType,omitempty"`
+			ForeignKey *struct {
+				TableId  *string `json:"tableId,omitempty"`
+				ColumnId *string `json:"columnId,omitempty"`
+			} `json:"foreignKey,omitempty"`
+		} `json:"columns,omitempty"`
 	} `json:"data"`
 }

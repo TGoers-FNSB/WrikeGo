@@ -11,9 +11,9 @@ func DependenciesFromJSON(data []byte) (Dependencies, error) {
 type Dependencies struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id            string `json:"id"`
-		PredecessorId string `json:"predecessorId"`
-		SuccessorId   string `json:"successorId"`
-		RelationType  string `json:"relationType"`
+		Id            *string `json:"id,omitempty"`
+		PredecessorId *string `json:"predecessorId,omitempty"`
+		SuccessorId   *string `json:"successorId,omitempty"`
+		RelationType  *string `json:"relationType,omitempty"`
 	} `json:"data"`
 }

@@ -13,9 +13,9 @@ func HourlyRatesProvisionFromJSON(data []byte) (HourlyRatesProvision, error) {
 type HourlyRatesProvision struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Contact    string  `json:"contact"`
-		RateType   string  `json:"rateType"`
-		RateValue  float64 `json:"rateValue"`
-		RateSource string  `json:"rateSource"`
+		Contact    *string  `json:"contact,omitempty"`
+		RateType   *string  `json:"rateType,omitempty"`
+		RateValue  *float64 `json:"rateValue,omitempty"`
+		RateSource *string  `json:"rateSource,omitempty"`
 	} `json:"data"`
 }

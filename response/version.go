@@ -11,7 +11,7 @@ func VersionFromJSON(data []byte) (Version, error) {
 type Version struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Major int `json:"major"`
-		Minor int `json:"minor"`
+		Major *int `json:"major,omitempty"`
+		Minor *int `json:"minor,omitempty"`
 	} `json:"data"`
 }

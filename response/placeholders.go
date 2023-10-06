@@ -13,11 +13,11 @@ func PlaceholdersFromJSON(data []byte) (Placeholders, error) {
 type Placeholders struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id         string `json:"id"`
-		Title      string `json:"title"`
-		ShortTitle string `json:"shortTitle"`
-		AvatarURL  string `json:"avatarUrl"`
-		JobRoleId  string `json:"jobRoleId"`
-		Deleted    bool   `json:"deleted"`
+		Id         *string `json:"id,omitempty"`
+		Title      *string `json:"title,omitempty"`
+		ShortTitle *string `json:"shortTitle,omitempty"`
+		AvatarURL  *string `json:"avatarUrl,omitempty"`
+		JobRoleId  *string `json:"jobRoleId,omitempty"`
+		Deleted    *bool   `json:"deleted,omitempty"`
 	} `json:"data"`
 }

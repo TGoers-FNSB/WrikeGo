@@ -11,19 +11,19 @@ func WorkflowsFromJSON(data []byte) (Workflows, error) {
 type Workflows struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id             string `json:"id"`
-		SpaceId			string	`json:"spaceId"`
-		Name           string `json:"name"`
-		Standard       bool   `json:"standard"`
-		Hidden         bool   `json:"hidden"`
-		CustomStatuses []struct {
-			Id           string `json:"id"`
-			Name         string `json:"name"`
-			StandardName bool   `json:"standardName"`
-			Color        string `json:"color"`
-			Standard     bool   `json:"standard"`
-			Group        string `json:"group"`
-			Hidden       bool   `json:"hidden"`
-		} `json:"customStatuses"`
+		Id             *string `json:"id,omitempty"`
+		SpaceId        *string `json:"spaceId,omitempty"`
+		Name           *string `json:"name,omitempty"`
+		Standard       *bool   `json:"standard,omitempty"`
+		Hidden         *bool   `json:"hidden,omitempty"`
+		CustomStatuses *[]struct {
+			Id           *string `json:"id,omitempty"`
+			Name         *string `json:"name,omitempty"`
+			StandardName *bool   `json:"standardName,omitempty"`
+			Color        *string `json:"color,omitempty"`
+			Standard     *bool   `json:"standard,omitempty"`
+			Group        *string `json:"group,omitempty"`
+			Hidden       *bool   `json:"hidden,omitempty"`
+		} `json:"customStatuses,omitempty"`
 	} `json:"data"`
 }

@@ -13,8 +13,8 @@ func UserTypesFromJSON(data []byte) (UserTypes, error) {
 type UserTypes struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id          string `json:"id"`
-		Title       string `json:"title"`
-		Description string `json:"description"`
+		Id          *string `json:"id,omitempty"`
+		Title       *string `json:"title,omitempty"`
+		Description *string `json:"description,omitempty"`
 	} `json:"data"`
 }

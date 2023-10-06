@@ -13,10 +13,10 @@ func CustomItemTypesFromJSON(data []byte) (CustomItemTypes, error) {
 type CustomItemTypes struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id          string `json:"id"`
-		Title       string `json:"title"`
-		RelatedType string `json:"relatedType"`
-		SpaceId     string `json:"spaceId"`
-		Description string `json:"description"`
+		Id          *string `json:"id,omitempty"`
+		Title       *string `json:"title,omitempty"`
+		RelatedType *string `json:"relatedType,omitempty"`
+		SpaceId     *string `json:"spaceId,omitempty"`
+		Description *string `json:"description,omitempty"`
 	} `json:"data"`
 }
