@@ -11,7 +11,7 @@ func IDsFromJSON(data []byte) (IDs, error) {
 type IDs struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id      string `json:"id"`
-		APIV2Id string `json:"apiV2Id"`
+		Id      *string `json:"id,omitempty"`
+		APIV2Id *string `json:"apiV2Id,omitempty"`
 	} `json:"data"`
 }

@@ -13,27 +13,27 @@ func ApprovalsFromJSON(data []byte) (Approvals, error) {
 type Approvals struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		TaskId      string `json:"taskId,omitempty"`
-		AuthorId    string `json:"authorId"`
-		Title       string `json:"title"`
-		Description string `json:"description"`
-		UpdatedDate string `json:"updatedDate"`
-		DueDate     string `json:"dueDate"`
-		Decisions   []struct {
-			ApproverId  string `json:"approverId"`
-			Comment     string `json:"comment"`
-			Status      string `json:"status"`
-			UpdatedDate string `json:"updatedDate"`
-		} `json:"decisions"`
-		ReviewId            string   `json:"reviewId"`
-		AttachmentIds       []string `json:"attachmentIds"`
-		Type                string   `json:"type"`
-		AutoFinishOnApprove bool     `json:"autoFinishOnApprove"`
-		AutoFinishOnReject  bool     `json:"autoFinishOnReject"`
-		Finished            bool     `json:"finished"`
-		FinisherId          string   `json:"finisherId"`
-		Id                  string   `json:"id"`
-		Status              string   `json:"status"`
-		FolderId            string   `json:"folderId,omitempty"`
+		TaskId      *string `json:"taskId,omitempty"`
+		AuthorId    *string `json:"authorId,omitempty"`
+		Title       *string `json:"title,omitempty"`
+		Description *string `json:"description,omitempty"`
+		UpdatedDate *string `json:"updatedDate,omitempty"`
+		DueDate     *string `json:"dueDate,omitempty"`
+		Decisions   *[]struct {
+			ApproverId  *string `json:"approverId,omitempty"`
+			Comment     *string `json:"comment,omitempty"`
+			Status      *string `json:"status,omitempty"`
+			UpdatedDate *string `json:"updatedDate,omitempty"`
+		} `json:"decisions,omitempty"`
+		ReviewId            *string   `json:"reviewId,omitempty"`
+		AttachmentIds       *[]string `json:"attachmentIds,omitempty"`
+		Type                *string   `json:"type,omitempty"`
+		AutoFinishOnApprove *bool     `json:"autoFinishOnApprove,omitempty"`
+		AutoFinishOnReject  *bool     `json:"autoFinishOnReject,omitempty"`
+		Finished            *bool     `json:"finished,omitempty"`
+		FinisherId          *string   `json:"finisherId,omitempty"`
+		Id                  *string   `json:"id,omitempty"`
+		Status              *string   `json:"status,omitempty"`
+		FolderId            *string   `json:"folderId,omitempty"`
 	} `json:"data"`
 }

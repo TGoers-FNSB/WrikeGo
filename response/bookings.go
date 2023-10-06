@@ -13,22 +13,22 @@ func BookingsFromJSON(data []byte) (Bookings, error) {
 type Bookings struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id            string `json:"id"`
-		FolderId      string `json:"folderId"`
-		ResponsibleId string `json:"responsibleId"`
-		BookingDates  struct {
-			Duration       int    `json:"duration"`
-			StartDate      string `json:"startDate"`
-			FinishDate     string `json:"finishDate"`
-			WorkOnWeekends bool   `json:"workOnWeekends"`
-		} `json:"bookingDates"`
-		EffortAllocation struct {
-			ResponsibleAllocation []struct {
-				UserId          string        `json:"userId"`
-				DailyAllocation []interface{} `json:"dailyAllocation"` //? Unknown data type
-			} `json:"responsibleAllocation"`
-			Mode        string `json:"mode"`
-			TotalEffort int    `json:"totalEffort"`
-		} `json:"effortAllocation"`
+		Id            *string `json:"id,omitempty"`
+		FolderId      *string `json:"folderId,omitempty"`
+		ResponsibleId *string `json:"responsibleId,omitempty"`
+		BookingDates  *struct {
+			Duration       *int    `json:"duration,omitempty"`
+			StartDate      *string `json:"startDate,omitempty"`
+			FinishDate     *string `json:"finishDate,omitempty"`
+			WorkOnWeekends *bool   `json:"workOnWeekends,omitempty"`
+		} `json:"bookingDates,omitempty"`
+		EffortAllocation *struct {
+			ResponsibleAllocation *[]struct {
+				UserId          *string        `json:"userId,omitempty"`
+				DailyAllocation *[]interface{} `json:"dailyAllocation,omitempty"` //? Unknown data type
+			} `json:"responsibleAllocation,omitempty"`
+			Mode        *string `json:"mode,omitempty"`
+			TotalEffort *int    `json:"totalEffort,omitempty"`
+		} `json:"effortAllocation,omitempty"`
 	} `json:"data"`
 }

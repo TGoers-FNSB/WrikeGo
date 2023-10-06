@@ -13,19 +13,19 @@ func SpacesFromJSON(data []byte) (Spaces, error) {
 type Spaces struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id          string `json:"id"`
-		Title       string `json:"title"`
-		Description string `json:"description,omitempty"`
-		AvatarURL   string `json:"avatarUrl"`
-		AccessType  string `json:"accessType"`
-		Archived    bool   `json:"archived"`
-		Members     []struct {
-			Id           string `json:"id"`
-			AccessRoleId string `json:"accessRoleId"`
-			IsManager    bool   `json:"isManager"`
-		} `json:"members"`
-		GuestRoleId              string `json:"guestRoleId,omitempty"`
-		DefaultProjectWorkflowId string `json:"defaultProjectWorkflowId"`
-		DefaultTaskWorkflowId    string `json:"defaultTaskWorkflowId"`
+		Id          *string `json:"id,omitempty"`
+		Title       *string `json:"title,omitempty"`
+		Description *string `json:"description,omitempty"`
+		AvatarURL   *string `json:"avatarUrl,omitempty"`
+		AccessType  *string `json:"accessType,omitempty"`
+		Archived    *bool   `json:"archived,omitempty"`
+		Members     *[]struct {
+			Id           *string `json:"id,omitempty"`
+			AccessRoleId *string `json:"accessRoleId,omitempty"`
+			IsManager    *bool   `json:"isManager,omitempty"`
+		} `json:"members,omitempty"`
+		GuestRoleId              *string `json:"guestRoleId,omitempty"`
+		DefaultProjectWorkflowId *string `json:"defaultProjectWorkflowId,omitempty"`
+		DefaultTaskWorkflowId    *string `json:"defaultTaskWorkflowId,omitempty"`
 	} `json:"data"`
 }

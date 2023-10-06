@@ -13,11 +13,11 @@ func UserScheduleExceptionsFromJSON(data []byte) (UserScheduleExceptions, error)
 type UserScheduleExceptions struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id            string `json:"id"`
-		UserId        string `json:"userId"`
-		FromDate      string `json:"fromDate"`
-		ToDate        string `json:"toDate"`
-		IsWorkDays    bool   `json:"isWorkDays"`
-		ExclusionType string `json:"exclusionType"`
+		Id            *string `json:"id,omitempty"`
+		UserId        *string `json:"userId,omitempty"`
+		FromDate      *string `json:"fromDate,omitempty"`
+		ToDate        *string `json:"toDate,omitempty"`
+		IsWorkDays    *bool   `json:"isWorkDays,omitempty"`
+		ExclusionType *string `json:"exclusionType,omitempty"`
 	} `json:"data"`
 }

@@ -11,9 +11,9 @@ func TimelogCategoriesFromJSON(data []byte) (TimelogCategories, error) {
 type TimelogCategories struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id     string `json:"id"`
-		Name   string `json:"name"`
-		Order  int    `json:"order"`
-		Hidden bool   `json:"hidden"`
+		Id     *string `json:"id,omitempty"`
+		Name   *string `json:"name,omitempty"`
+		Order  *int    `json:"order,omitempty"`
+		Hidden *bool   `json:"hidden,omitempty"`
 	} `json:"data"`
 }

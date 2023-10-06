@@ -13,16 +13,16 @@ func TaskBlueprintsFromJSON(data []byte) (TaskBlueprints, error) {
 type TaskBlueprints struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id              string      `json:"id"`
-		Title           string      `json:"title"`
-		ChildIds        []string    `json:"childIds"`
-		Scope           string      `json:"scope"`
-		Status          string      `json:"status"`
-		ProgressPercent int         `json:"progressPercent"`
-		TotalCount      int         `json:"totalCount"`
-		ProcessedCount  int         `json:"processedCount"`
-		Type            string      `json:"type"`
-		Result          interface{} `json:"result"`
-		ErrorMessage    string      `json:"errorMessage"`
+		Id              *string      `json:"id,omitempty"`
+		Title           *string      `json:"title,omitempty"`
+		ChildIds        *[]string    `json:"childIds,omitempty"`
+		Scope           *string      `json:"scope,omitempty"`
+		Status          *string      `json:"status,omitempty"`
+		ProgressPercent *int         `json:"progressPercent,omitempty"`
+		TotalCount      *int         `json:"totalCount,omitempty"`
+		ProcessedCount  *int         `json:"processedCount,omitempty"`
+		Type            *string      `json:"type,omitempty"`
+		Result          *interface{} `json:"result,omitempty"`
+		ErrorMessage    *string      `json:"errorMessage,omitempty"`
 	} `json:"data"`
 }

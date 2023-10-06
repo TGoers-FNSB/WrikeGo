@@ -13,10 +13,10 @@ func WorkScheduleExceptionsFromJSON(data []byte) (WorkScheduleExceptions, error)
 type WorkScheduleExceptions struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id            string `json:"id"`
-		FromDate      string `json:"fromDate"`
-		ToDate        string `json:"toDate"`
-		IsWorkDays    bool   `json:"isWorkDays"`
-		ExclusionType string `json:"exclusionType"`
+		Id            *string `json:"id,omitempty"`
+		FromDate      *string `json:"fromDate,omitempty"`
+		ToDate        *string `json:"toDate,omitempty"`
+		IsWorkDays    *bool   `json:"isWorkDays,omitempty"`
+		ExclusionType *string `json:"exclusionType,omitempty"`
 	} `json:"data"`
 }

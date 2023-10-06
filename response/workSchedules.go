@@ -13,13 +13,13 @@ func WorkSchedulesFromJSON(data []byte) (WorkSchedules, error) {
 type WorkSchedules struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Id           string `json:"id"`
-		ScheduleType string `json:"scheduleType"`
-		Title        string `json:"title"`
-		Workweek     []struct {
-			WorkDays        []string `json:"workDays"`
-			CapacityMinutes int      `json:"capacityMinutes"`
-		} `json:"workweek"`
-		UserIds []string `json:"userIds"`
+		Id           *string `json:"id,omitempty"`
+		ScheduleType *string `json:"scheduleType,omitempty"`
+		Title        *string `json:"title,omitempty"`
+		Workweek     *[]struct {
+			WorkDays        *[]string `json:"workDays,omitempty"`
+			CapacityMinutes *int      `json:"capacityMinutes,omitempty"`
+		} `json:"workweek,omitempty"`
+		UserIds *[]string `json:"userIds,omitempty"`
 	} `json:"data"`
 }

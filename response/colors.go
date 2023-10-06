@@ -11,7 +11,7 @@ func ColorsFromJSON(data []byte) (Colors, error) {
 type Colors struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Name string `json:"name"`
-		Hex  string `json:"hex"`
+		Name *string `json:"name,omitempty"`
+		Hex  *string `json:"hex,omitempty"`
 	} `json:"data"`
 }

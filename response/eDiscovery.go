@@ -13,7 +13,7 @@ func EDiscoveryFromJSON(data []byte) (EDiscovery, error) {
 type EDiscovery struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		Type string `json:"type"`
-		Id   string `json:"id"`
+		Type *string `json:"type,omitempty"`
+		Id   *string `json:"id,omitempty"`
 	} `json:"data"`
 }
