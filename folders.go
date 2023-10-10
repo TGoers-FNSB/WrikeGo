@@ -20,7 +20,7 @@ func QueryFolders(config Config, params params.QueryFolders) (resp.Folders, erro
 	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersInFolder(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
+func QueryFoldersByFolder(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -30,7 +30,7 @@ func QueryFoldersInFolder(config Config, params params.QueryFolders, pathId stri
 	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersInSpace(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
+func QueryFoldersBySpace(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/spaces/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -60,7 +60,7 @@ func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []strin
 	return resp.FoldersFromJSON(response)
 }
 
-func CreateFolderInFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
+func CreateFolderByFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {

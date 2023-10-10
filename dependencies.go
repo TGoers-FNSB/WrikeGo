@@ -10,7 +10,7 @@ import (
 	query "github.com/google/go-querystring/query"
 )
 
-func QueryDependencyByTask(config Config, pathId string) (resp.Dependencies, error) {
+func QueryDependenciesByTask(config Config, pathId string) (resp.Dependencies, error) {
 	path := fmt.Sprintf("/tasks/%s/dependencies", pathId)
 	response, _ := Get(config, path, nil)
 	return resp.DependenciesFromJSON(response)
@@ -22,7 +22,7 @@ func QueryDependenciesByIds(config Config, pathId []string) (resp.Dependencies, 
 	return resp.DependenciesFromJSON(response)
 }
 
-func CreateDependencyByTask(config Config, params params.CreateDependencies, pathId string) (resp.Dependencies, error) {
+func CreateDependenciesByTask(config Config, params params.CreateDependencies, pathId string) (resp.Dependencies, error) {
 	path := fmt.Sprintf("/tasks/%s/dependencies", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -32,7 +32,7 @@ func CreateDependencyByTask(config Config, params params.CreateDependencies, pat
 	return resp.DependenciesFromJSON(response)
 }
 
-func ModifyDependencyById(config Config, params params.ModifyDependencies, pathId string) (resp.Dependencies, error) {
+func ModifyDependenciesById(config Config, params params.ModifyDependencies, pathId string) (resp.Dependencies, error) {
 	path := fmt.Sprintf("/dependencies/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -42,7 +42,7 @@ func ModifyDependencyById(config Config, params params.ModifyDependencies, pathI
 	return resp.DependenciesFromJSON(response)
 }
 
-func DeleteDependencyById(config Config, pathId string) (resp.Dependencies, error) {
+func DeleteDependenciesById(config Config, pathId string) (resp.Dependencies, error) {
 	path := fmt.Sprintf("/dependencies/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.DependenciesFromJSON(response)

@@ -20,7 +20,7 @@ func QueryTasks(config Config, params params.QueryTasks) (resp.Tasks, error) {
 	return resp.TasksFromJSON(response)
 }
 
-func QueryTasksInFolder(config Config, params params.QueryTasks, pathId string) (resp.Tasks, error) {
+func QueryTasksByFolder(config Config, params params.QueryTasks, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/folders/%s/tasks", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -30,7 +30,7 @@ func QueryTasksInFolder(config Config, params params.QueryTasks, pathId string) 
 	return resp.TasksFromJSON(response)
 }
 
-func QueryTasksInSpace(config Config, params params.QueryTasks, pathId string) (resp.Tasks, error) {
+func QueryTasksBySpace(config Config, params params.QueryTasks, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/spaces/%s/tasks", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -50,7 +50,7 @@ func QueryTasksByIds(config Config, params params.QueryTasks, pathId []string) (
 	return resp.TasksFromJSON(response)
 }
 
-func QueryTasksFieldsHistoryByIds(config Config, params params.QueryTasksFieldsHistory, pathId []string) (resp.Tasks, error) {
+func QueryTasksFieldsHistoryByTasks(config Config, params params.QueryTasksFieldsHistory, pathId []string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/tasks/%s/tasks_history", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
@@ -60,7 +60,7 @@ func QueryTasksFieldsHistoryByIds(config Config, params params.QueryTasksFieldsH
 	return resp.TasksFromJSON(response)
 }
 
-func CreateTaskInFolder(config Config, params params.CreateTasks, pathId string) (resp.Tasks, error) {
+func CreateTasksByFolder(config Config, params params.CreateTasks, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/folders/%s/tasks", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -70,7 +70,7 @@ func CreateTaskInFolder(config Config, params params.CreateTasks, pathId string)
 	return resp.TasksFromJSON(response)
 }
 
-func ModifyTaskById(config Config, params params.ModifyTasks, pathId string) (resp.Tasks, error) {
+func ModifyTasksById(config Config, params params.ModifyTasks, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/tasks/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -90,7 +90,7 @@ func ModifyTasksByIds(config Config, params params.ModifyTasks, pathId []string)
 	return resp.TasksFromJSON(response)
 }
 
-func DeleteTaskById(config Config, pathId string) (resp.Tasks, error) {
+func DeleteTasksById(config Config, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/tasks/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.TasksFromJSON(response)

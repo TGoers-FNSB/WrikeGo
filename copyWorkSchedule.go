@@ -9,7 +9,7 @@ import (
 	query "github.com/google/go-querystring/query"
 )
 
-func CreateWorkSchedulesByWorkScheduleId(config Config, params params.CreateCopyWorkSchedules, pathId string) (resp.CopyWorkSchedules, error) {
+func CreateWorkSchedulesByWorkSchedule(config Config, params params.CreateCopyWorkSchedules, pathId string) (resp.CopyWorkSchedules, error) {
 	path := fmt.Sprintf("/workschedules/%s/duplicate", pathId)
 	body, err := query.Values(params)
 	if err != nil {

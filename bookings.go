@@ -46,7 +46,7 @@ func CreateBookingsByFolder(config Config, params params.CreateBookings, pathId 
 	return resp.BookingsFromJSON(response)
 }
 
-func ModifyBookingsByFolder(config Config, params params.ModifyBookings, pathId string) (resp.Bookings, error) {
+func ModifyBookingsById(config Config, params params.ModifyBookings, pathId string) (resp.Bookings, error) {
 	path := fmt.Sprintf("/bookings/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {

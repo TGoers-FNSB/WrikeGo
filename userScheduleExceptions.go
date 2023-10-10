@@ -35,7 +35,7 @@ func CreateUserScheduleExceptions(config Config, params params.CreateUserSchedul
 	return resp.UserScheduleExceptionsFromJSON(response)
 }
 
-func ModifyUserScheduleExceptions(config Config, params params.ModifyUserScheduleExceptions) (resp.UserScheduleExceptions, error) {
+func ModifyUserScheduleExceptionsById(config Config, params params.ModifyUserScheduleExceptions) (resp.UserScheduleExceptions, error) {
 	path := "/user_schedule_exclusions"
 	body, err := query.Values(params)
 	if err != nil {

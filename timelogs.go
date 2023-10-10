@@ -80,7 +80,7 @@ func CreateTimelogsByTask(config Config, params params.CreateTimelogs, pathId st
 	return resp.TimelogsFromJSON(response)
 }
 
-func ModifyTimelogsByTask(config Config, params params.ModifyTimelogs, pathId string) (resp.Timelogs, error) {
+func ModifyTimelogsById(config Config, params params.ModifyTimelogs, pathId string) (resp.Timelogs, error) {
 	path := fmt.Sprintf("/timelogs/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {

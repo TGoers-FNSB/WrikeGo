@@ -32,7 +32,7 @@ func CreateJobRoles(config Config, params params.CreateJobRoles) (resp.JobRoles,
 	return resp.JobRolesFromJSON(response)
 }
 
-func ModifyJobRoles(config Config, params params.ModifyJobRoles, pathId string) (resp.JobRoles, error) {
+func ModifyJobRolesById(config Config, params params.ModifyJobRoles, pathId string) (resp.JobRoles, error) {
 	path := fmt.Sprintf("/jobroles/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -42,7 +42,7 @@ func ModifyJobRoles(config Config, params params.ModifyJobRoles, pathId string) 
 	return resp.JobRolesFromJSON(response)
 }
 
-func DeleteJobRoles(config Config, pathId string) (resp.JobRoles, error) {
+func DeleteJobRolesById(config Config, pathId string) (resp.JobRoles, error) {
 	path := fmt.Sprintf("/jobroles/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.JobRolesFromJSON(response)
