@@ -9,13 +9,13 @@ import (
 	query "github.com/google/go-querystring/query"
 )
 
-func QueryUserById(config Config, pathId string) (resp.Users, error) {
+func QueryUsersById(config Config, pathId string) (resp.Users, error) {
 	path := fmt.Sprintf("/users/%s", pathId)
 	response, _ := Get(config, path, nil)
 	return resp.UsersFromJSON(response)
 }
 
-func ModifyUserById(config Config, params params.ModifyUsers, pathId string) (resp.Users, error) {
+func ModifyUsersById(config Config, params params.ModifyUsers, pathId string) (resp.Users, error) {
 	path := fmt.Sprintf("/users/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {

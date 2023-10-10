@@ -30,7 +30,7 @@ func QueryContactsByIds(config Config, params params.QueryContacts, pathId []str
 	return resp.ContactsFromJSON(response)
 }
 
-func QueryContactsFieldsHistoryByIds(config Config, params params.QueryContacts, pathId []string) (resp.Contacts, error) {
+func QueryContactsFieldsHistoryByContacts(config Config, params params.QueryContacts, pathId []string) (resp.Contacts, error) {
 	path := fmt.Sprintf("/contacts/%s/contacts_history", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {

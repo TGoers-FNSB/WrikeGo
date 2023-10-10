@@ -11,17 +11,24 @@ func AttachmentsFromJSON(data []byte) (Attachments, error) {
 type Attachments struct {
 	Kind string `json:"kind"`
 	Data []struct {
-		ID                  string `json:"id"`
-		AuthorID            string `json:"authorId"`
-		Name                string `json:"name"`
-		CreatedDate         string `json:"createdDate"`
-		Version             int    `json:"version"`
-		Type                string `json:"type"`
-		ContentType         string `json:"contentType"`
-		Size                int    `json:"size"`
-		TaskID              string `json:"taskId,omitempty"`
-		CurrentAttachmentID string `json:"currentAttachmentId,omitempty"`
-		OriginVersionID     string `json:"originVersionId"`
-		FolderID            string `json:"folderId,omitempty"`
+		Id                  *string   `json:"id,omitempty"`
+		AuthorId            *string   `json:"authorId,omitempty"`
+		Name                *string   `json:"name,omitempty"`
+		CreatedDate         *string   `json:"createdDate,omitempty"`
+		Version             *int      `json:"version,omitempty"`
+		Type                *string   `json:"type,omitempty"`
+		ContentType         *string   `json:"contentType,omitempty"`
+		Size                *int      `json:"size,omitempty"`
+		TaskId              *string   `json:"taskId,omitempty"`
+		FolderId            *string   `json:"folderId,omitempty"`
+		CommentId           *string   `json:"commentId,omitempty"`
+		CurrentAttachmentId *string   `json:"currentAttachmentId,omitempty"`
+		PreviewUrl          *string   `json:"previewUrl,omitempty"`
+		Url                 *string   `json:"url,omitempty"`
+		PlaylistUrl         *string   `json:"playlistUrl,omitempty"`
+		ReviewIds           *[]string `json:"reviewIds,omitempty"`
+		Width               *int      `json:"width,omitempty"`
+		Height              *int      `json:"height,omitempty"`
+		OriginVersionId     *string   `json:"originVersionId,omitempty"`
 	} `json:"data"`
 }

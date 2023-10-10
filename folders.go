@@ -40,7 +40,7 @@ func QueryFoldersBySpace(config Config, params params.QueryFolders, pathId strin
 	return resp.FoldersFromJSON(response)
 }
 
-func QueryFoldersFieldsHistoryByIds(config Config, params params.QueryFolders, pathId []string) (resp.Folders, error) {
+func QueryFoldersFieldsHistoryByFolders(config Config, params params.QueryFolders, pathId []string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders_history", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	if err != nil {
@@ -60,7 +60,7 @@ func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []strin
 	return resp.FoldersFromJSON(response)
 }
 
-func CreateFolderByFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
+func CreateFoldersByFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -90,7 +90,7 @@ func CreateFolderCopyAsyncById(config Config, params params.CreateFoldersCopy, p
 	return resp.FoldersFromJSON(response)
 }
 
-func ModifyFolderById(config Config, params params.ModifyFolders, pathId string) (resp.Folders, error) {
+func ModifyFoldersById(config Config, params params.ModifyFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -110,7 +110,7 @@ func ModifyFoldersByIds(config Config, params params.ModifyFolders, pathId []str
 	return resp.FoldersFromJSON(response)
 }
 
-func DeleteFolderById(config Config, pathId string) (resp.Tasks, error) {
+func DeleteFoldersById(config Config, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/folders/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.TasksFromJSON(response)
