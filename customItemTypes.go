@@ -36,7 +36,7 @@ func QueryCustomItemTypesByIds(config Config, pathId []string) (resp.CustomItemT
 	return resp.CustomItemTypesFromJSON(response)
 }
 
-func CreateWorkFromCustomItemTypeByCustomItemType(config Config, params params.CreateWorkFromCustomItemType, pathId string) (resp.CustomItemTypes, error) {
+func CreateWorkFromCustomItemTypesByCustomItemType(config Config, params params.CreateWorkFromCustomItemType, pathId string) (resp.CustomItemTypes, error) {
 	path := fmt.Sprintf("/custom_item_types/%s/instantiate", pathId)
 	body, err := query.Values(params)
 	if err != nil {

@@ -19,6 +19,16 @@ func QueryTaskBlueprints(config Config, params params.QueryTaskBlueprints) (resp
 	return resp.TaskBlueprintsFromJSON(response)
 }
 
+func QueryTaskBlueprintsBySpace(config Config, params params.QueryTaskBlueprints, pathId string) (resp.TaskBlueprints, error) {
+	path := fmt.Sprintf("/spaces/%s/task_blueprints", pathId)
+	body, err := query.Values(params)
+	if err != nil {
+		log.Println(err)
+	}
+	response, _ := Get(config, path, body)
+	return resp.TaskBlueprintsFromJSON(response)
+}
+
 func CreateTaskBlueprintsAsync(config Config, params params.CreateTaskBlueprintsAsync, pathId string) (resp.TaskBlueprints, error) {
 	path := fmt.Sprintf("/task_blueprints/%s/launch_async", pathId)
 	body, err := query.Values(params)

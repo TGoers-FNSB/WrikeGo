@@ -19,7 +19,7 @@ func QuerySpaces(config Config, params params.QuerySpaces) (resp.Spaces, error) 
 	return resp.SpacesFromJSON(response)
 }
 
-func QuerySpaceById(config Config, params params.QuerySpaces, pathId string) (resp.Spaces, error) {
+func QuerySpacesById(config Config, params params.QuerySpaces, pathId string) (resp.Spaces, error) {
 	path := fmt.Sprintf("/spaces/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -29,7 +29,7 @@ func QuerySpaceById(config Config, params params.QuerySpaces, pathId string) (re
 	return resp.SpacesFromJSON(response)
 }
 
-func CreateSpace(config Config, params params.CreateSpaces) (resp.Spaces, error) {
+func CreateSpaces(config Config, params params.CreateSpaces) (resp.Spaces, error) {
 	path := "/spaces"
 	body, err := query.Values(params)
 	if err != nil {
@@ -39,7 +39,7 @@ func CreateSpace(config Config, params params.CreateSpaces) (resp.Spaces, error)
 	return resp.SpacesFromJSON(response)
 }
 
-func ModifySpaceById(config Config, params params.ModifySpaces, pathId string) (resp.Spaces, error) {
+func ModifySpacesById(config Config, params params.ModifySpaces, pathId string) (resp.Spaces, error) {
 	path := fmt.Sprintf("/spaces/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -49,7 +49,7 @@ func ModifySpaceById(config Config, params params.ModifySpaces, pathId string) (
 	return resp.SpacesFromJSON(response)
 }
 
-func DeleteSpaceById(config Config, pathId string) (resp.Spaces, error) {
+func DeleteSpacesById(config Config, pathId string) (resp.Spaces, error) {
 	path := fmt.Sprintf("/spaces/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.SpacesFromJSON(response)

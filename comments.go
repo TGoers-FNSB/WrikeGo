@@ -46,7 +46,7 @@ func QueryCommentsByIds(config Config, params params.QueryComments, pathId []str
 	return resp.CommentsFromJSON(response)
 }
 
-func CreateCommentByFolder(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
+func CreateCommentsByFolder(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/folders/%s/comments", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -56,7 +56,7 @@ func CreateCommentByFolder(config Config, params params.CreateComments, pathId s
 	return resp.CommentsFromJSON(response)
 }
 
-func CreateCommentByTask(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
+func CreateCommentsByTask(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/folders/%s/comments", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -66,7 +66,7 @@ func CreateCommentByTask(config Config, params params.CreateComments, pathId str
 	return resp.CommentsFromJSON(response)
 }
 
-func ModifyCommentById(config Config, params params.ModifyComments, pathId string) (resp.Comments, error) {
+func ModifyCommentsById(config Config, params params.ModifyComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/comments/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {

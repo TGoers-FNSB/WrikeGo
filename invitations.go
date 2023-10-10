@@ -15,7 +15,7 @@ func QueryInvitations(config Config) (resp.Invitations, error) {
 	return resp.InvitationsFromJSON(response)
 }
 
-func CreateInvitation(config Config, params params.CreateInvitations) (resp.Invitations, error) {
+func CreateInvitations(config Config, params params.CreateInvitations) (resp.Invitations, error) {
 	path := "/invitations"
 	body, err := query.Values(params)
 	if err != nil {
@@ -25,7 +25,7 @@ func CreateInvitation(config Config, params params.CreateInvitations) (resp.Invi
 	return resp.InvitationsFromJSON(response)
 }
 
-func ModifyInvitationById(config Config, params params.ModifyInvitaions, pathId string) (resp.Invitations, error) {
+func ModifyInvitationsById(config Config, params params.ModifyInvitaions, pathId string) (resp.Invitations, error) {
 	path := fmt.Sprintf("/inivations/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
@@ -35,7 +35,7 @@ func ModifyInvitationById(config Config, params params.ModifyInvitaions, pathId 
 	return resp.InvitationsFromJSON(response)
 }
 
-func DeleteInvitationById(config Config, pathId string) (resp.Invitations, error) {
+func DeleteInvitationsById(config Config, pathId string) (resp.Invitations, error) {
 	path := fmt.Sprintf("/invitations/%s", pathId)
 	response, _ := Delete(config, path, nil)
 	return resp.InvitationsFromJSON(response)

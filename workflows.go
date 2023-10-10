@@ -15,7 +15,7 @@ func QueryWorkflows(config Config) (resp.Workflows, error) {
 	return resp.WorkflowsFromJSON(response)
 }
 
-func CreateWorkflow(config Config, params params.CreateWorkflows) (resp.Workflows, error) {
+func CreateWorkflows(config Config, params params.CreateWorkflows) (resp.Workflows, error) {
 	path := "/workflows"
 	body, err := query.Values(params)
 	if err != nil {
@@ -25,7 +25,7 @@ func CreateWorkflow(config Config, params params.CreateWorkflows) (resp.Workflow
 	return resp.WorkflowsFromJSON(response)
 }
 
-func ModifyWorkflowById(config Config, params params.CreateWorkflows, pathId string) (resp.Workflows, error) {
+func ModifyWorkflowsById(config Config, params params.CreateWorkflows, pathId string) (resp.Workflows, error) {
 	path := fmt.Sprintf("/workflows/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {
