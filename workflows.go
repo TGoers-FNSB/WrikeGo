@@ -25,7 +25,7 @@ func CreateWorkflow(config Config, params params.CreateWorkflows) (resp.Workflow
 	return resp.WorkflowsFromJSON(response)
 }
 
-func ModifyWorkflow(config Config, params params.CreateWorkflows, pathId string) (resp.Workflows, error) {
+func ModifyWorkflowById(config Config, params params.CreateWorkflows, pathId string) (resp.Workflows, error) {
 	path := fmt.Sprintf("/workflows/%s", pathId)
 	body, err := query.Values(params)
 	if err != nil {

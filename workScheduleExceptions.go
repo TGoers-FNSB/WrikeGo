@@ -35,7 +35,7 @@ func CreateWorkScheduleExceptionsByWorkSchedule(config Config, params params.Cre
 	return resp.WorkScheduleExceptionsFromJSON(response)
 }
 
-func ModifyWorkScheduleExceptionsByWorkSchedule(config Config, params params.ModifyWorkScheduleExceptions, pathId string) (resp.WorkScheduleExceptions, error) {
+func ModifyWorkScheduleExceptionsById(config Config, params params.ModifyWorkScheduleExceptions, pathId string) (resp.WorkScheduleExceptions, error) {
 	path := fmt.Sprintf("/workschedules/%s/workschedule_exclusions", pathId)
 	body, err := query.Values(params)
 	if err != nil {
