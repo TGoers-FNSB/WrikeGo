@@ -35,26 +35,26 @@ type QueryTasksFieldsHistory struct {
 }
 
 type CreateTasks struct {
-	Title                   string            `url:"title"`
-	Description             string            `url:"description,omitempty"`
-	Status                  string            `url:"status,omitempty"`
-	Importance              string            `url:"importance,omitempty"`
-	Dates                   *TaskDates        `url:"dates,omitempty"`
-	Shareds                 []string          `url:"shareds,omitempty,slice"`
-	Parents                 []string          `url:"parents,omitempty"`
-	Responsibles            []string          `url:"responsibles,omitempty"`
-	ResponsiblePlaceholders []string          `url:"resopnsiblePlaceholders,omitempty"`
-	Followers               []string          `url:"followers,omitempty"`
-	Follow                  bool              `url:"follow,omitempty"`
-	PriorityBefore          string            `url:"priorityBefore,omitempty"`
-	PriorityAfter           string            `url:"priorityAfter,omitempty"`
-	SuperTasks              []string          `url:"superTasks,omitempty"`
-	Metadata                *[]Metadata       `url:"metadata,omitempty"`
+	Title                   string           `url:"title"`
+	Description             string           `url:"description,omitempty"`
+	Status                  string           `url:"status,omitempty"`
+	Importance              string           `url:"importance,omitempty"`
+	Dates                   TaskDates        `url:"dates,omitempty,struct"`
+	Shareds                 []string         `url:"shareds,omitempty,slice"`
+	Parents                 []string         `url:"parents,omitempty"`
+	Responsibles            []string         `url:"responsibles,omitempty"`
+	ResponsiblePlaceholders []string         `url:"resopnsiblePlaceholders,omitempty"`
+	Followers               []string         `url:"followers,omitempty"`
+	Follow                  bool             `url:"follow,omitempty"`
+	PriorityBefore          string           `url:"priorityBefore,omitempty"`
+	PriorityAfter           string           `url:"priorityAfter,omitempty"`
+	SuperTasks              []string         `url:"superTasks,omitempty"`
+	Metadata                []Metadata       `url:"metadata,omitempty"`
 	CustomFields            []CustomField    `url:"customFields,omitempty,slice+struct"`
-	CustomStatus            string            `url:"customStatus,omitempty"`
-	EffortAllocation        *EffortAllocation `url:"effortAllocation,omitempty"`
-	BillingType             string            `url:"billingType,omitempty"`
-	Fields                  []string          `url:"fields,omitempty"`
+	CustomStatus            string           `url:"customStatus,omitempty"`
+	EffortAllocation        EffortAllocation `url:"effortAllocation,omitempty"`
+	BillingType             string           `url:"billingType,omitempty"`
+	Fields                  []string         `url:"fields,omitempty"`
 }
 
 type ModifyTasks struct {
