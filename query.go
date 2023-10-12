@@ -169,12 +169,11 @@ func reflectValue(values url.Values, val reflect.Value, scope string) error {
 		}
 
 		if sv.Kind() == reflect.Struct {
-			if err := reflectValue(values, sv, name); err != nil {
-				return err
+			if opts.Contains("struct") { //! Here
+				values.Add(name, valueString(sv, opts, sf))
 			}
 			continue
 		}
-		// fmt.Println(valueString(sv, opts, sf))
 
 		values.Add(name, valueString(sv, opts, sf))
 	}
@@ -221,31 +220,23 @@ func valueString(v reflect.Value, opts tagOptions, sf reflect.StructField) strin
 		return t.Format(time.RFC3339)
 	}
 
+	//! Here
 	if opts.Contains("slice") {
 		val := v.Interface().([]string)
 		newVal := sliceConvert(val)
 		var inter interface{}
 		inter = newVal
 		return fmt.Sprint(inter)
+	} else if opts.Contains("struct") {
+		newVal := objectConvert(v)
+		var inter interface{}
+		inter = newVal
+		return fmt.Sprint(inter)
 	} else if opts.Contains("slice+struct") {
 		newVal := "["
 		for i := 0; i < v.Len(); i++ {
-			newVal += "{"
 			val := v.Index(i)
-			for j := 0; j < val.NumField(); j++ {
-				key := val.Type().Field(j).Name
-				value := val.FieldByName(key).String()
-				if val.FieldByName(key).Kind() == reflect.Slice {
-					value = sliceConvert(val.FieldByName(key).Interface().([]string))
-				}
-				// Check if value is empty
-				_, opts2 := parseTag(val.Type().Field(j).Tag.Get("url"))
-				if opts2.Contains("omitempty") && isEmptyValue(val.FieldByName(key)) {
-					continue
-				}
-				newVal += `"` + strcase.ToLowerCamel(key) + `":"` + value + `",`
-			}
-			newVal = newVal[:len(newVal)-1] + "},"
+			newVal += objectConvert(val) + ","
 		}
 		newVal = newVal[:len(newVal)-1] + "]"
 		var inter interface{}
@@ -256,12 +247,35 @@ func valueString(v reflect.Value, opts tagOptions, sf reflect.StructField) strin
 	return fmt.Sprint(v.Interface())
 }
 
+//! Here
 func sliceConvert(sl []string) string {
 	if len(sl) > 0 {
 		return `["` + strings.Join(sl, `","`) + `"]`
 	} else {
 		return ""
 	}
+}
+
+//! Here
+func objectConvert(v reflect.Value) string {
+	newVal := "{"
+	val := v
+	for j := 0; j < val.NumField(); j++ {
+		key := val.Type().Field(j).Name
+		var value string // value := fmt.Sprint(val.FieldByName(key).Interface())
+		if val.FieldByName(key).Kind() == reflect.Slice {
+			value = sliceConvert(val.FieldByName(key).Interface().([]string))
+		} else {
+			value = `"` + fmt.Sprint(val.FieldByName(key).Interface()) + `"`
+		}
+		_, opts2 := parseTag(val.Type().Field(j).Tag.Get("url"))
+		if opts2.Contains("omitempty") && isEmptyValue(val.FieldByName(key)) {
+			continue
+		}
+		newVal += `"` + strcase.ToLowerCamel(key) + `":` + value + `,`
+	}
+	newVal = newVal[:len(newVal)-1] + "}"
+	return newVal
 }
 
 // isEmptyValue checks if a value should be considered empty for the purposes

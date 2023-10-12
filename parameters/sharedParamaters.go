@@ -11,11 +11,11 @@ type DateOrRange struct {
 }
 
 type TaskDates struct {
-	Type           string  `url:"type"`
-	Duration       *int    `url:"duration,omitempty"`
-	Start          *string `url:"start,omitempty"`
-	Due            *string `url:"due,omitempty"`
-	WorkOnWeekends *bool   `url:"workOnWeekends,omitempty"`
+	Type           string `url:"type"`
+	Duration       int    `url:"duration,omitempty"`
+	Start          string `url:"start,omitempty"`
+	Due            string `url:"due,omitempty"`
+	WorkOnWeekends bool   `url:"workOnWeekends,omitempty"`
 }
 
 type Metadata struct {
@@ -33,22 +33,22 @@ type CustomField struct {
 }
 
 type EffortAllocation struct {
-	AllocatedEffort           *int   `url:"allocatedEffort,omitempty"`
-	DailyAllocationPercentage *int   `url:"dailyAllocationPercentage,omitempty"`
+	AllocatedEffort           int    `url:"allocatedEffort,omitempty"`
+	DailyAllocationPercentage int    `url:"dailyAllocationPercentage,omitempty"`
 	Mode                      string `url:"mode"`
-	TotalEffort               *int   `url:"totalEffort,omitempty"`
+	TotalEffort               int    `url:"totalEffort,omitempty"`
 }
 
 type Project struct {
-	OwnerIds       *[]string `url:"ownerIds,omitempty"`
-	Status         *string   `url:"status,omitempty"`
-	CustomStatusId *string   `url:"customStatusId,omitempty"`
-	StartDate      *string   `url:"startDate,omitempty"`
-	EndDate        *string   `url:"endDate,omitempty"`
-	ContractType   *string   `url:"contractType,omitempty"`
-	Budget         *float64  `url:"budget,omitempty"`
-	OwnersAdd      *[]string `url:"ownersAdd,omitempty"`
-	OwnersRemove   *[]string `url:"ownersRemove,omitempty"`
+	OwnerIds       []string `url:"ownerIds,omitempty"`
+	Status         string   `url:"status,omitempty"`
+	CustomStatusId string   `url:"customStatusId,omitempty"`
+	StartDate      string   `url:"startDate,omitempty"`
+	EndDate        string   `url:"endDate,omitempty"`
+	ContractType   string   `url:"contractType,omitempty"`
+	Budget         float64  `url:"budget,omitempty"`
+	OwnersAdd      []string `url:"ownersAdd,omitempty"`
+	OwnersRemove   []string `url:"ownersRemove,omitempty"`
 }
 
 type Avatar struct {

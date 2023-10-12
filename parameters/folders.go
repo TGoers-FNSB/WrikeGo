@@ -13,14 +13,14 @@ type QueryFolders struct {
 }
 
 type CreateFolders struct {
-	Title         string         `url:"title"`
-	Description   *string        `url:"description,omitempty"`
-	Shareds       *[]string      `url:"shareds,omitempty"`
-	Metadata      *[]Metadata    `url:"metadata,omitempty"`
-	CustomFields  *[]CustomField `url:"customFields,omitempty"`
-	CustomColumns *[]string      `url:"customColumns,omitempty"`
-	Project       *Project       `url:"project,omitempty"`
-	Fields        *[]string      `url:"fields,omitempty"`
+	Title         string        `url:"title"`
+	Description   string        `url:"description,omitempty"`
+	Shareds       []string      `url:"shareds,omitempty"`
+	Metadata      []Metadata    `url:"metadata,omitempty"`
+	CustomFields  []CustomField `url:"customFields,omitempty"`
+	CustomColumns []string      `url:"customColumns,omitempty"`
+	Project       Project       `url:"project,omitempty,struct"`
+	Fields        []string      `url:"fields,omitempty"`
 }
 
 type CreateFoldersCopy struct {
