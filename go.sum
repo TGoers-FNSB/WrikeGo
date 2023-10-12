@@ -1,4 +1,7 @@
+github.com/TGoers-FNSB/go-querystring-wrike v1.3.0 h1:tNX7b82idhU0cVgL+fPdp+88Zj2mkvUeZv2MelqLy3s=
+github.com/TGoers-FNSB/go-querystring-wrike v1.3.0/go.mod h1:Wdp1HQDxl7yyteVh+Uy2/Tt3ZAZ3HSzg9tqdmckK9zk=
 github.com/google/go-cmp v0.5.2/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
+github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/google/go-querystring v1.1.0 h1:AnCroh3fv4ZBgVIf1Iwtovgjaw/GiKJo8M8yD/fhyJ8=
 github.com/google/go-querystring v1.1.0/go.mod h1:Kcdr2DB4koayq7X8pmAG4sNG59So17icRSOU623lUBU=
 github.com/iancoleman/strcase v0.3.0 h1:nTXanmYxhfFAMjZL34Ov6gkzEsSJZ5DbhxWjvSASxEI=
