@@ -1,15 +1,15 @@
 package wrikego
 
 type Config struct {
-	BaseUrl	string
-	PermAccessToken	string
-	SslVerify	bool
+	BaseUrl         string
+	PermAccessToken string
+	SslVerify       bool
 }
 
 func NewConfig(base_url string, perm_access_token string, ssl_verify bool) Config {
 	return Config{
-		BaseUrl: base_url,
+		BaseUrl:         base_url,
 		PermAccessToken: perm_access_token,
-		SslVerify: ssl_verify,
+		SslVerify:       ssl_verify,
 	}
 }
