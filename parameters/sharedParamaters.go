@@ -5,9 +5,9 @@ package wrikeparams
 */
 
 type DateOrRange struct {
-	Start *string `url:"start,omitempty"`
-	End   *string `url:"end,omitempty"`
-	Equal *string `url:"equal,omitempty"`
+	Start string `url:"start,omitempty"`
+	End   string `url:"end,omitempty"`
+	Equal string `url:"equal,omitempty"`
 }
 
 type TaskDates struct {
@@ -24,12 +24,12 @@ type Metadata struct {
 }
 
 type CustomField struct {
-	Id         string    `url:"id"`
-	Comparator *string   `url:"comparator,omitempty"`
-	Value      string    `url:"value"`
-	MinValue   *string   `url:"minValue,omitempty"`
-	MaxValue   *string   `url:"maxValue,omitempty"`
-	Values     *[]string `url:"values,omitempty"`
+	Id         string   `url:"id"`
+	Value      string   `url:"value"`
+	Comparator string   `url:"comparator,omitempty"`
+	MinValue   string   `url:"minValue,omitempty"`
+	MaxValue   string   `url:"maxValue,omitempty"`
+	Values     []string `url:"values,omitempty"`
 }
 
 type EffortAllocation struct {
