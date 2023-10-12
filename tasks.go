@@ -7,7 +7,7 @@ import (
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
-	query "github.com/google/go-querystring/query"
+	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
 func QueryTasks(config Config, params params.QueryTasks) (resp.Tasks, error) {
@@ -62,7 +62,7 @@ func QueryTasksFieldsHistoryByTasks(config Config, params params.QueryTasksField
 //----------------------
 func CreateTasksByFolder(config Config, params params.CreateTasks, pathId string) (resp.Tasks, error) {
 	path := fmt.Sprintf("/folders/%s/tasks", pathId)
-	body, err := Values(params)
+	body, err := query.Values(params)
 	if err != nil {
 		log.Println(err)
 	}

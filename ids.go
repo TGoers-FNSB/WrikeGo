@@ -5,7 +5,7 @@ import (
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
-	query "github.com/google/go-querystring/query"
+	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
 func QueryIDs(config Config, params params.QueryIDs) (resp.IDs, error) {
