@@ -1,7 +1,7 @@
 package wrikeparams
 
 type QueryWorkSchedules struct {
-	Fields *[]string `url:"fields,omitempty"`
+	Fields []string `url:"fields,omitempty,slice"`
 }
 
 type CreateWorkSchedules struct {
@@ -9,20 +9,20 @@ type CreateWorkSchedules struct {
 	Workweek []struct {
 		DayOfWeek string `url:"dayOfWeek"`
 		IsWorkDay bool   `url:"isWorkDay"`
-	} `url:"workweek"`
-	AddUsers        *[]string `url:"addUsers,omitempty"`
-	CapacityMinutes *int      `url:"capacityMinutes,omitempty"`
-	Fields          *[]string `url:"fields,omitempty"`
+	} `url:"workweek,slice+struct"`
+	AddUsers        []string `url:"addUsers,omitempty,slice"`
+	CapacityMinutes int      `url:"capacityMinutes,omitempty"`
+	Fields          []string `url:"fields,omitempty,slice"`
 }
 
 type ModifyWorkSchedules struct {
-	Title    *string `url:"title,omitempty"`
-	Workweek *[]struct {
+	Title    string `url:"title,omitempty"`
+	Workweek []struct {
 		DayOfWeek string `url:"dayOfWeek"`
 		IsWorkDay bool   `url:"isWorkDay"`
-	} `url:"workweek,omitempty"`
-	AddUsers        *[]string `url:"addUsers,omitempty"`
-	RemoveUsers     *[]string `url:"removeUsers,omitempty"`
-	CapacityMinutes *int      `url:"capacityMinutes,omitempty"`
-	Fields          *[]string `url:"fields,omitempty"`
+	} `url:"workweek,omitempty,slice+struct"`
+	AddUsers        []string `url:"addUsers,omitempty,slice"`
+	RemoveUsers     []string `url:"removeUsers,omitempty,slice"`
+	CapacityMinutes int      `url:"capacityMinutes,omitempty"`
+	Fields          []string `url:"fields,omitempty,slice"`
 }

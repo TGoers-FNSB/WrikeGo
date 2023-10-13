@@ -7,5 +7,5 @@ type CreateDependencies struct {
 }
 
 type ModifyDependencies struct {
-	RelationType  string `url:"relationType"`
+	RelationType string `url:"relationType"`
 }

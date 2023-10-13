@@ -5,15 +5,15 @@ type CreateWorkflows struct {
 }
 
 type ModifyWorkflows struct {
-	Name         *string `url:"name,omitempty"`
-	Hidden       *bool   `url:"hidden,omitempty"`
-	CustomStatus *struct { //? Check on struct structure
-		Id           *string `url:"id,omitempty"`
-		Name         *string `url:"name,omitempty"`
-		StandardName *bool   `url:"standardName,omitempty"`
-		Color        *string `url:"color,omitempty"`
-		Standard     *bool   `url:"standard,omitempty"`
-		Group        *string `url:"group,omitempty"`
-		Hidden       *bool   `url:"hidden,omitempty"`
-	} `url:"customStatus,omitempty"`
+	Name         string   `url:"name,omitempty"`
+	Hidden       bool     `url:"hidden,omitempty"`
+	CustomStatus struct { //? Check on struct structure
+		Id           string `url:"id,omitempty"`
+		Name         string `url:"name,omitempty"`
+		StandardName bool   `url:"standardName,omitempty"`
+		Color        string `url:"color,omitempty"`
+		Standard     bool   `url:"standard,omitempty"`
+		Group        string `url:"group,omitempty"`
+		Hidden       bool   `url:"hidden,omitempty"`
+	} `url:"customStatus,omitempty,struct"`
 }

@@ -1,7 +1,7 @@
 package wrikeparams
 
 type QueryWorkScheduleExceptions struct {
-	DateRange *DateOrRange `url:"dateRange,omitempty"`
+	DateRange DateOrRange `url:"dateRange,omitempty,struct"`
 }
 
 type CreateWorkScheduleExceptions struct {
@@ -11,7 +11,7 @@ type CreateWorkScheduleExceptions struct {
 }
 
 type ModifyWorkScheduleExceptions struct {
-	FromDate      *string `url:"fromDate,omitempty"`
-	ToDate        *string `url:"toDate,omitempty"`
-	ExclusionType *string `url:"exclusionType,omitempty"`
+	FromDate      string `url:"fromDate,omitempty"`
+	ToDate        string `url:"toDate,omitempty"`
+	ExclusionType string `url:"exclusionType,omitempty"`
 }
