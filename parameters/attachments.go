@@ -3,9 +3,9 @@ package wrikeparams
 import "os"
 
 type QueryAttachments struct {
-	Versions    *bool        `url:"versions,omitempty"`
-	CreatedDate *DateOrRange `url:"createdDate"`
-	WithUrls    *bool        `url:"withUrls,omitempty"`
+	Versions    bool        `url:"versions,omitempty"`
+	CreatedDate DateOrRange `url:"createdDate,struct"`
+	WithUrls    bool        `url:"withUrls,omitempty"`
 }
 
 type DownloadAttachmentPreview struct {
@@ -15,5 +15,5 @@ type DownloadAttachmentPreview struct {
 type UploadAttachment struct {
 	FileName   string
 	DataBinary *os.File
-	Url        *string `url:"url,omitempty"`
+	Url        string `url:"url,omitempty"`
 }

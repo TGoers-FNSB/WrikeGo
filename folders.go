@@ -22,7 +22,7 @@ func QueryFolders(config Config, params params.QueryFolders) (resp.Folders, erro
 
 func QueryFoldersByFolder(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
-	body, err := query.Values(params)
+	body, err := Values(params)
 	if err != nil {
 		log.Println(err)
 	}
@@ -62,7 +62,7 @@ func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []strin
 
 func CreateFoldersByFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
-	body, err := query.Values(params)
+	body, err := Values(params)
 	if err != nil {
 		log.Println(err)
 	}
