@@ -31,4 +31,7 @@ type Attachments struct {
 		Height              *int      `json:"height,omitempty"`
 		OriginVersionId     *string   `json:"originVersionId,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

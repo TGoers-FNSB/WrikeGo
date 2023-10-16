@@ -14,4 +14,7 @@ type Colors struct {
 		Name *string `json:"name,omitempty"`
 		Hex  *string `json:"hex,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

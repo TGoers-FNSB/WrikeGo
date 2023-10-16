@@ -54,4 +54,7 @@ type Account struct {
 		} `json:"customFields,omitempty"`
 		JoinedDate *string `json:"joinedDate,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

@@ -2,7 +2,7 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -13,9 +13,8 @@ import (
 func ModifyHourlyRatesProvisionsByIds(config Config, params params.ModifyHourlyRatesProvision, pathId []string) (resp.HourlyRatesProvision, error) {
 	path := fmt.Sprintf("/contacts/%s/hourly_rates_provision", strings.Join(pathId, ","))
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
+	ErrorCheck(err)
+	response, err := Put(config, path, body)
+	ErrorCheck(err)
 	return resp.HourlyRatesProvisionFromJSON(response)
 }

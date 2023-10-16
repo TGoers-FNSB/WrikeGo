@@ -20,4 +20,7 @@ type UserScheduleExceptions struct {
 		IsWorkDays    *bool   `json:"isWorkDays,omitempty"`
 		ExclusionType *string `json:"exclusionType,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

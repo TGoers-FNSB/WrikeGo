@@ -28,4 +28,7 @@ type Comments struct {
 			Email     *string `json:"email,omitempty"`
 		} `json:"externalRequester,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

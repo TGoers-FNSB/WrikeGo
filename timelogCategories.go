@@ -6,6 +6,7 @@ import (
 
 func QueryTimelogCategories(config Config) (resp.Timelogs, error) {
 	path := "/timelog_categories"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.TimelogsFromJSON(response)
 }

@@ -20,4 +20,7 @@ type Placeholders struct {
 		JobRoleId  *string `json:"jobRoleId,omitempty"`
 		Deleted    *bool   `json:"deleted,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

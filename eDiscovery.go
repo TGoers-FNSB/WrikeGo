@@ -1,7 +1,7 @@
 package wrikego
 
 import (
-	"log"
+	
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
@@ -11,9 +11,8 @@ import (
 func CreateEDiscovery(config Config, params params.CreateEDiscovery, pathId string) (resp.EDiscovery, error) {
 	path := "/ediscovery_search"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
+	ErrorCheck(err)
+	response, err := Post(config, path, body)
+	ErrorCheck(err)
 	return resp.EDiscoveryFromJSON(response)
 }

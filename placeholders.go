@@ -9,12 +9,14 @@ import (
 
 func QueryPlaceholders(config Config) (resp.Placeholders, error) {
 	path := "/placeholders"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.PlaceholdersFromJSON(response)
 }
 
 func QueryPlaceholdersByIds(config Config, pathId []string) (resp.Placeholders, error) {
 	path := fmt.Sprintf("/placeholders/%s", strings.Join(pathId, ","))
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.PlaceholdersFromJSON(response)
 }

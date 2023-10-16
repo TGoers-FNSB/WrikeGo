@@ -6,6 +6,7 @@ import (
 
 func QueryAccessRoles(config Config) (resp.AccessRoles, error) {
 	path := "/access_roles"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.AccessRolesFromJSON(response)
 }

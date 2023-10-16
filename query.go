@@ -308,7 +308,7 @@ func isEmptyValue(v reflect.Value) bool {
 			_, opts := parseTag(v.Type().Field(j).Tag.Get("url"))
 
 			result := isEmptyValue(value)
-			fmt.Println(key, "-", value, "-", result, "---", isEmptyValue(value))
+			// fmt.Println(key, "-", value, "-", result, "---", isEmptyValue(value))
 			if opts.Contains("omitempty") {
 				continue
 			}

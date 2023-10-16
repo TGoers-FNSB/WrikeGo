@@ -22,4 +22,7 @@ type CopyWorkSchedules struct {
 		} `json:"workweek,omitempty"`
 		UserIds *[]string `json:"userIds,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

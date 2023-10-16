@@ -31,4 +31,7 @@ type DataExport struct {
 			} `json:"foreignKey,omitempty"`
 		} `json:"columns,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

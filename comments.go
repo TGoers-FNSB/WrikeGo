@@ -2,7 +2,7 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -12,72 +12,68 @@ import (
 
 func QueryComments(config Config, params params.QueryComments) (resp.Comments, error) {
 	path := "/comments"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func QueryCommentsByFolder(config Config, params params.QueryComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/folders/%s/comments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
+	ErrorCheck(err)
+	response, err := Get(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func QueryCommentsByTask(config Config, params params.QueryComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/tasks/%s/comments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
+	ErrorCheck(err)
+	response, err := Get(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func QueryCommentsByIds(config Config, params params.QueryComments, pathId []string) (resp.Comments, error) {
 	path := fmt.Sprintf("/comments/%s", strings.Join(pathId, ","))
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
+	ErrorCheck(err)
+	response, err := Get(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func CreateCommentsByFolder(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/folders/%s/comments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
+	ErrorCheck(err)
+	response, err := Post(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func CreateCommentsByTask(config Config, params params.CreateComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/folders/%s/comments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
+	ErrorCheck(err)
+	response, err := Post(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func ModifyCommentsById(config Config, params params.ModifyComments, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/comments/%s", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
+	ErrorCheck(err)
+	response, err := Put(config, path, body)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }
 
 func DeleteCommentById(config Config, pathId string) (resp.Comments, error) {
 	path := fmt.Sprintf("/comments/%s", pathId)
-	response, _ := Delete(config, path, nil)
+	response, err := Delete(config, path, nil)
+	ErrorCheck(err)
 	return resp.CommentsFromJSON(response)
 }

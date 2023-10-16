@@ -6,6 +6,7 @@ import (
 
 func QueryColors(config Config) (resp.Colors, error) {
 	path := "/colors"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.ColorsFromJSON(response)
 }

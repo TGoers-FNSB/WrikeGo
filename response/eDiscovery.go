@@ -16,4 +16,7 @@ type EDiscovery struct {
 		Type *string `json:"type,omitempty"`
 		Id   *string `json:"id,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

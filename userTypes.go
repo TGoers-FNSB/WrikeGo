@@ -6,6 +6,7 @@ import (
 
 func QueryUserTypes(config Config) (resp.UserTypes, error) {
 	path := "/user_types"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.UserTypesFromJSON(response)
 }

@@ -38,22 +38,20 @@ func Update(config Config, path string, params params.UploadAttachment) ([]byte,
 }
 
 func api(method string, config Config, path string, params url.Values) ([]byte, error) {
-	url := config.BaseUrl + path + "?" + params.Encode() // wrikeEncode(params)
-	fmt.Println(url) //! Remove
+	url := config.BaseUrl + path + "?" + params.Encode()
+	fmt.Println(url)
 
 	client := http.Client{}
 	req, err := http.NewRequest(method, url, nil)
+	ErrorCheck(err)
 	req.Header.Add("Authorization", "Bearer "+config.PermAccessToken)
 	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println("Request Error:", err)
-	}
+	ErrorCheck(err)
 	defer res.Body.Close()
-
 	response, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println("io.ReadAll Error:", err)
-	}
+	ErrorCheck(err)
+
+	fmt.Println(string(response))
 
 	return response, err
 }
@@ -66,20 +64,17 @@ func apiAttachment(method string, config Config, path string, params params.Uplo
 
 	client := http.Client{}
 	req, err := http.NewRequest(method, url, params.DataBinary)
+	ErrorCheck(err)
 	req.Header.Add("Authorization", "Bearer "+config.PermAccessToken)
 	req.Header.Add("content-type", "application/octet-stream")
 	req.Header.Add("X-Requested-With", "XMLHttpRequest")
 	req.Header.Add("X-File-Name", params.FileName)
 	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println("Request Error:", err)
-	}
+	ErrorCheck(err)
 	defer res.Body.Close()
 
 	response, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println("io.ReadAll Error:", err)
-	}
+	ErrorCheck(err)
 
 	return response, err
 }

@@ -6,6 +6,7 @@ import (
 
 func QueryVersion(config Config) (resp.Version, error) {
 	path := "/version"
-	response, _ := Get(config, path, nil)
+	response, err := Get(config, path, nil)
+	ErrorCheck(err)
 	return resp.VersionFromJSON(response)
 }

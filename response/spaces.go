@@ -28,4 +28,7 @@ type Spaces struct {
 		DefaultProjectWorkflowId *string `json:"defaultProjectWorkflowId,omitempty"`
 		DefaultTaskWorkflowId    *string `json:"defaultTaskWorkflowId,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }
