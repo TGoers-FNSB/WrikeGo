@@ -1,4 +1,4 @@
-package wrikego
+package main
 
 import (
 	"bytes"
