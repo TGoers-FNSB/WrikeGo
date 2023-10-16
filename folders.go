@@ -21,7 +21,7 @@ func QueryFolders(config Config, params params.QueryFolders) (resp.Folders, erro
 
 func QueryFoldersByFolder(config Config, params params.QueryFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
-	body, err := Values(params)
+	body, err := query.Values(params)
 	ErrorCheck(err)
 	response, err := Get(config, path, body)
 	ErrorCheck(err)
@@ -57,7 +57,7 @@ func QueryFoldersByIds(config Config, params params.QueryFolders, pathId []strin
 
 func CreateFoldersByFolder(config Config, params params.CreateFolders, pathId string) (resp.Folders, error) {
 	path := fmt.Sprintf("/folders/%s/folders", pathId)
-	body, err := Values(params)
+	body, err := query.Values(params)
 	ErrorCheck(err)
 	response, err := Post(config, path, body)
 	ErrorCheck(err)
