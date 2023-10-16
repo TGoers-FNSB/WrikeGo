@@ -25,4 +25,7 @@ type TaskBlueprints struct {
 		Result          *interface{} `json:"result,omitempty"`
 		ErrorMessage    *string      `json:"errorMessage,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

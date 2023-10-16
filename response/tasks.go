@@ -76,4 +76,7 @@ type Tasks struct {
 		PlannedFees      *float64 `json:"plannedFees,omitempty"`
 		PlannedCost      *float64 `json:"plannedCost,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

@@ -18,4 +18,7 @@ type HourlyRatesProvision struct {
 		RateValue  *float64 `json:"rateValue,omitempty"`
 		RateSource *string  `json:"rateSource,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

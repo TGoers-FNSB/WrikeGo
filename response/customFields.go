@@ -24,4 +24,7 @@ type CustomFields struct {
 			ReadOnly              *bool   `json:"readOnly,omitempty"`
 		} `json:"settings,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

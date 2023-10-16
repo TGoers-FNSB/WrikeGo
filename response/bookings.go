@@ -31,4 +31,7 @@ type Bookings struct {
 			TotalEffort *int    `json:"totalEffort,omitempty"`
 		} `json:"effortAllocation,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

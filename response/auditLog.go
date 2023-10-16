@@ -29,4 +29,7 @@ type AuditLog struct {
 			UserTypeId *string `json:"User Type Id,omitempty"`
 		} `json:"details,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

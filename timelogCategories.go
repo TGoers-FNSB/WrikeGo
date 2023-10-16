@@ -1,11 +1,16 @@
 package wrikego
 
 import (
+	"net/http"
+
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryTimelogCategories(config Config) (resp.Timelogs, error) {
+func QueryTimelogCategories(config Config) (resp.TimelogCategories, *http.Response) {
 	path := "/timelog_categories"
-	response, _ := Get(config, path, nil)
-	return resp.TimelogsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.TimelogCategoriesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

@@ -19,4 +19,7 @@ type JobRoles struct {
 		AvatarURL  *string `json:"avatarUrl,omitempty"`
 		IsDeleted  *bool   `json:"isDeleted,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

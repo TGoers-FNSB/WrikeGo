@@ -14,4 +14,7 @@ type Version struct {
 		Major *int `json:"major,omitempty"`
 		Minor *int `json:"minor,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

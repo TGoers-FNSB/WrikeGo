@@ -16,4 +16,7 @@ type TimelogCategories struct {
 		Order  *int    `json:"order,omitempty"`
 		Hidden *bool   `json:"hidden,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

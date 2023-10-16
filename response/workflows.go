@@ -26,4 +26,7 @@ type Workflows struct {
 			Hidden       *bool   `json:"hidden,omitempty"`
 		} `json:"customStatuses,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

@@ -19,4 +19,7 @@ type CustomItemTypes struct {
 		SpaceId     *string `json:"spaceId,omitempty"`
 		Description *string `json:"description,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

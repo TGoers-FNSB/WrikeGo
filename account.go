@@ -1,29 +1,31 @@
 package wrikego
 
 import (
-	"log"
+	"net/http"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryAccount(config Config, params params.QueryAccount) (resp.Account, error) {
+func QueryAccount(config Config, params params.QueryAccount) (resp.Account, *http.Response) {
 	path := "/account"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
-	return resp.AccountFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Get(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AccountFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyAccount(config Config, params params.QueryAccount) (resp.Account, error) {
+func ModifyAccount(config Config, params params.QueryAccount) (resp.Account, *http.Response) {
 	path := "/account"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
-	return resp.AccountFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Put(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AccountFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

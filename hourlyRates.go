@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,50 +11,62 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryHourlyRatesByContacts(config Config, pathId []string) (resp.HourlyRates, error) {
+func QueryHourlyRatesByContacts(config Config, pathId []string) (resp.HourlyRates, *http.Response) {
 	path := fmt.Sprintf("/contacts/%s/hourly_rates", strings.Join(pathId, ","))
-	response, _ := Get(config, path, nil)
-	return resp.HourlyRatesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryHourlyRatesByFolder(config Config, pathId string) (resp.HourlyRates, error) {
+func QueryHourlyRatesByFolder(config Config, pathId string) (resp.HourlyRates, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/hourly_rates", pathId)
-	response, _ := Get(config, path, nil)
-	return resp.HourlyRatesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryHourlyRatesByPlaceholders(config Config, pathId []string) (resp.HourlyRates, error) {
+func QueryHourlyRatesByPlaceholders(config Config, pathId []string) (resp.HourlyRates, *http.Response) {
 	path := fmt.Sprintf("/placeholders/%s/hourly_rates", strings.Join(pathId, ","))
-	response, _ := Get(config, path, nil)
-	return resp.HourlyRatesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyHourlyRates(config Config, params params.ModifyHourlyRates) (resp.HourlyRates, error) {
+func ModifyHourlyRates(config Config, params params.ModifyHourlyRates) (resp.HourlyRates, *http.Response) {
 	path := "hourly_rates"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
-	return resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Put(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyHourlyRatesByFolder(config Config, params params.ModifyHourlyRates, pathId string) (resp.HourlyRates, error) {
+func ModifyHourlyRatesByFolder(config Config, params params.ModifyHourlyRates, pathId string) (resp.HourlyRates, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/hourly_rates", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
-	return resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Put(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteTeamMembersByFolder(config Config, params params.DeleteTeamMembers, pathId string) (resp.HourlyRates, error) {
+func DeleteTeamMembersByFolder(config Config, params params.DeleteTeamMembers, pathId string) (resp.HourlyRates, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/project_team_members", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Delete(config, path, body)
-	return resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Delete(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.HourlyRatesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

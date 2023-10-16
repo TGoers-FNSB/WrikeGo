@@ -44,8 +44,8 @@ type Folders struct {
 		Space            *bool     `json:"space,omitempty"`
 		CustomItemTypeId *string   `json:"customItemTypeId,omitempty"`
 		AccountId        *string   `json:"accountId,omitempty"`
-		CreatedDate      *string    `json:"createdDate,omitempty"`
-		UpdatedDate      *string     `json:"updatedDate,omitempty"`
+		CreatedDate      *string   `json:"createdDate,omitempty"`
+		UpdatedDate      *string   `json:"updatedDate,omitempty"`
 		BriefDescription *string   `json:"briefDescription,omitempty"`
 		Description      *string   `json:"description,omitempty"`
 		SharedIds        *[]string `json:"sharedIds,omitempty"`
@@ -68,11 +68,14 @@ type Folders struct {
 			Key   *string `json:"key,omitempty"`
 			Value *string `json:"value,omitempty"`
 		} `json:"userAccessRoles,omitempty"`
-		Status	*string	`josn:"status,omitempty"`
-		ProgressPercent	*float64	`json:"progressPercent,omitempty"`
-		ProcessedCount	*int	`json:"processedCount,omitempty"`
-		Type	*string	`json:"type,omitempty"`
-		Result	*interface{}	`json:"result,omitempty"` //? Unknown data type
-		ErrorMessage	*string	`json:"errorMessage,omitempty"`
+		Status          *string      `josn:"status,omitempty"`
+		ProgressPercent *float64     `json:"progressPercent,omitempty"`
+		ProcessedCount  *int         `json:"processedCount,omitempty"`
+		Type            *string      `json:"type,omitempty"`
+		Result          *interface{} `json:"result,omitempty"` //? Unknown data type
+		ErrorMessage    *string      `json:"errorMessage,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

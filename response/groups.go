@@ -24,4 +24,7 @@ type Groups struct {
 			Value *string `json:"value,omitempty"`
 		} `json:"metadata,omitempty"`
 	} `json:"data,omitempty"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

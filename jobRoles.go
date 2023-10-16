@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,40 +11,51 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryJobRoles(config Config) (resp.JobRoles, error) {
+func QueryJobRoles(config Config) (resp.JobRoles, *http.Response) {
 	path := "/jobroles"
-	response, _ := Get(config, path, nil)
-	return resp.JobRolesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryJobRolesByIds(config Config, pathId []string) (resp.JobRoles, error) {
+func QueryJobRolesByIds(config Config, pathId []string) (resp.JobRoles, *http.Response) {
 	path := fmt.Sprintf("/jobroles/%s", strings.Join(pathId, ","))
-	response, _ := Get(config, path, nil)
-	return resp.JobRolesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateJobRoles(config Config, params params.CreateJobRoles) (resp.JobRoles, error) {
+func CreateJobRoles(config Config, params params.CreateJobRoles) (resp.JobRoles, *http.Response) {
 	path := "/jobroles"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
-	return resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Post(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyJobRolesById(config Config, params params.ModifyJobRoles, pathId string) (resp.JobRoles, error) {
+func ModifyJobRolesById(config Config, params params.ModifyJobRoles, pathId string) (resp.JobRoles, *http.Response) {
 	path := fmt.Sprintf("/jobroles/%s", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
-	return resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Put(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteJobRolesById(config Config, pathId string) (resp.JobRoles, error) {
+func DeleteJobRolesById(config Config, pathId string) (resp.JobRoles, *http.Response) {
 	path := fmt.Sprintf("/jobroles/%s", pathId)
-	response, _ := Delete(config, path, nil)
-	return resp.JobRolesFromJSON(response)
+	response, httpResponse, err := Delete(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.JobRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

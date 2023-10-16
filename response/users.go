@@ -40,4 +40,7 @@ type Users struct {
 		Location        *string `json:"location,omitempty"`
 		WorkScheduleId  *string `json:"workScheduleId,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

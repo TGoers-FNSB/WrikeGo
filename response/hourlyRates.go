@@ -24,4 +24,7 @@ type HourlyRates struct {
 			RateValue  *int    `json:"rateValue,omitempty"`
 		} `json:"costRate,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

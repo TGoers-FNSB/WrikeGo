@@ -1,11 +1,16 @@
 package wrikego
 
 import (
+	"net/http"
+
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryUserTypes(config Config) (resp.UserTypes, error) {
+func QueryUserTypes(config Config) (resp.UserTypes, *http.Response) {
 	path := "/user_types"
-	response, _ := Get(config, path, nil)
-	return resp.UserTypesFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.UserTypesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

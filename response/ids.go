@@ -14,4 +14,7 @@ type IDs struct {
 		Id      *string `json:"id,omitempty"`
 		APIV2Id *string `json:"apiV2Id,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

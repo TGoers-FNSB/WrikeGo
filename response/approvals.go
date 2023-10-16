@@ -36,4 +36,7 @@ type Approvals struct {
 		Status              *string   `json:"status,omitempty"`
 		FolderId            *string   `json:"folderId,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

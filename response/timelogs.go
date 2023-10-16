@@ -27,4 +27,7 @@ type Timelogs struct {
 			ActualCost *float64 `json:"actualCost,omitempty"`
 		} `json:"finance,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

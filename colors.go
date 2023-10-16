@@ -1,11 +1,16 @@
 package wrikego
 
 import (
+	"net/http"
+
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryColors(config Config) (resp.Colors, error) {
+func QueryColors(config Config) (resp.Colors, *http.Response) {
 	path := "/colors"
-	response, _ := Get(config, path, nil)
-	return resp.ColorsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.ColorsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

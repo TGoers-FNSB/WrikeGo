@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,88 +11,107 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryAttachments(config Config, params params.QueryAttachments) (resp.Attachments, error) {
+func QueryAttachments(config Config, params params.QueryAttachments) (resp.Attachments, *http.Response) {
 	path := "/attachments"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
-	return resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Get(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryAttachmentsByFolder(config Config, params params.QueryAttachments, pathId string) (resp.Attachments, error) {
+func QueryAttachmentsByFolder(config Config, params params.QueryAttachments, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/attachments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
-	return resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Get(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryAttachmentsByTask(config Config, params params.QueryAttachments, pathId string) (resp.Attachments, error) {
+func QueryAttachmentsByTask(config Config, params params.QueryAttachments, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/attachments", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
-	return resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Get(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryAttachmentsByIds(config Config, params params.QueryAttachments, pathId []string) (resp.Attachments, error) {
+func QueryAttachmentsByIds(config Config, params params.QueryAttachments, pathId []string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/attachments/%s", strings.Join(pathId, ","))
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Get(config, path, body)
-	return resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Get(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DownloadAttachmentsByAttachment(config Config, pathId string) ([]byte, error) {
+func DownloadAttachmentsByAttachment(config Config, pathId string) ([]byte, *http.Response) {
 	path := fmt.Sprintf("/attachments/%s/download", pathId)
-	response, err := Download(config, path, nil)
-	return response, err
+	response, httpResponse, err := Download(config, path, nil)
+	ErrorCheck(err)
+	return response, httpResponse
 }
 
-func DownloadAttachmentsPreviewByAttachment(config Config, params params.DownloadAttachmentPreview, pathId string) ([]byte, error) {
+func DownloadAttachmentsPreviewByAttachment(config Config, params params.DownloadAttachmentPreview, pathId string) ([]byte, *http.Response) {
 	path := fmt.Sprintf("/attachments/%s/preview", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, err := Download(config, path, body)
-	return response, err
+	ErrorCheck(err)
+	response, httpResponse, err := Download(config, path, body)
+	ErrorCheck(err)
+	return response, httpResponse
 }
 
-func QueryAttachmentsAccessUrlByAttachment(config Config, pathId string) (resp.Attachments, error) {
+func QueryAttachmentsAccessUrlByAttachment(config Config, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/attachments/%s/url", pathId)
-	response, _ := Get(config, path, nil)
-	return resp.AttachmentsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func UploadAttachmentsByFolder(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, error) {
+func UploadAttachmentsByFolder(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/attachments", pathId)
-	response, _ := Upload(config, path, params)
-	return resp.AttachmentsFromJSON(response)
+	response, httpResponse, err := Upload(config, path, params)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func UploadAttachmentsByTask(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, error) {
+func UploadAttachmentsByTask(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/attachments", pathId)
-	response, _ := Upload(config, path, params)
-	return resp.AttachmentsFromJSON(response)
+	response, httpResponse, err := Upload(config, path, params)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func UpdateAttachmentsById(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, error) {
+func UpdateAttachmentsById(config Config, params params.UploadAttachment, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/attachments", pathId)
-	response, _ := Update(config, path, params)
-	return resp.AttachmentsFromJSON(response)
+	response, httpResponse, err := Update(config, path, params)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteAttachmentsById(config Config, pathId string) (resp.Attachments, error) {
+func DeleteAttachmentsById(config Config, pathId string) (resp.Attachments, *http.Response) {
 	path := fmt.Sprintf("/attachments/%s", pathId)
-	response, _ := Delete(config, path, nil)
-	return resp.AttachmentsFromJSON(response)
+	response, httpResponse, err := Delete(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.AttachmentsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

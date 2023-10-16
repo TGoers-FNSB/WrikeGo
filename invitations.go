@@ -2,41 +2,49 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	"net/http"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryInvitations(config Config) (resp.Invitations, error) {
+func QueryInvitations(config Config) (resp.Invitations, *http.Response) {
 	path := "/invitations"
-	response, _ := Get(config, path, nil)
-	return resp.InvitationsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateInvitations(config Config, params params.CreateInvitations) (resp.Invitations, error) {
+func CreateInvitations(config Config, params params.CreateInvitations) (resp.Invitations, *http.Response) {
 	path := "/invitations"
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
-	return resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Post(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyInvitationsById(config Config, params params.ModifyInvitaions, pathId string) (resp.Invitations, error) {
+func ModifyInvitationsById(config Config, params params.ModifyInvitaions, pathId string) (resp.Invitations, *http.Response) {
 	path := fmt.Sprintf("/inivations/%s", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Put(config, path, body)
-	return resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Put(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteInvitationsById(config Config, pathId string) (resp.Invitations, error) {
+func DeleteInvitationsById(config Config, pathId string) (resp.Invitations, *http.Response) {
 	path := fmt.Sprintf("/invitations/%s", pathId)
-	response, _ := Delete(config, path, nil)
-	return resp.InvitationsFromJSON(response)
+	response, httpResponse, err := Delete(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.InvitationsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

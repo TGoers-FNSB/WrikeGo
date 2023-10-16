@@ -23,4 +23,7 @@ type Invitations struct {
 		Role           *string `json:"role,omitempty"`
 		External       *bool   `json:"external,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

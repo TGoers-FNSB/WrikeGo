@@ -60,4 +60,7 @@ type Contacts struct {
 			EndDate  *string `json:"endDate,omitempty"`
 		} `json:"costRateHistory,omitempty"`
 	} `json:"data,omitempty"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

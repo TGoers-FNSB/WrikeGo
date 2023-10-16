@@ -16,4 +16,7 @@ type Dependencies struct {
 		SuccessorId   *string `json:"successorId,omitempty"`
 		RelationType  *string `json:"relationType,omitempty"`
 	} `json:"data"`
+	// Errors:
+	ErrorDescription *string `json:"errorDescription"`
+	Error            *string `json:"error"`
 }

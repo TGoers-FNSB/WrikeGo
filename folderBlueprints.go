@@ -2,31 +2,38 @@ package wrikego
 
 import (
 	"fmt"
-	"log"
+	"net/http"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryFolderBlueprints(config Config) (resp.FolderBlueprints, error) {
+func QueryFolderBlueprints(config Config) (resp.FolderBlueprints, *http.Response) {
 	path := "/folder_blueprints"
-	response, _ := Get(config, path, nil)
-	return resp.FolderBlueprintsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.FolderBlueprintsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryFolderBlueprintsBySpace(config Config, pathId string) (resp.FolderBlueprints, error) {
+func QueryFolderBlueprintsBySpace(config Config, pathId string) (resp.FolderBlueprints, *http.Response) {
 	path := fmt.Sprintf("/spaces/%s/folder_blueprints", pathId)
-	response, _ := Get(config, path, nil)
-	return resp.FolderBlueprintsFromJSON(response)
+	response, httpResponse, err := Get(config, path, nil)
+	ErrorCheck(err)
+	json, err := resp.FolderBlueprintsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateFolderBlueprintsAsync(config Config, params params.CreateFolderBlueprintsAsync, pathId string) (resp.FolderBlueprints, error) {
+func CreateFolderBlueprintsAsync(config Config, params params.CreateFolderBlueprintsAsync, pathId string) (resp.FolderBlueprints, *http.Response) {
 	path := fmt.Sprintf("/folder_blueprints/%s/launch_async", pathId)
 	body, err := query.Values(params)
-	if err != nil {
-		log.Println(err)
-	}
-	response, _ := Post(config, path, body)
-	return resp.FolderBlueprintsFromJSON(response)
+	ErrorCheck(err)
+	response, httpResponse, err := Post(config, path, body)
+	ErrorCheck(err)
+	json, err := resp.FolderBlueprintsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
