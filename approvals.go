@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,66 +11,82 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryApprovals(config Config, params params.QueryApprovals) (resp.Approvals, error) {
+func QueryApprovals(config Config, params params.QueryApprovals) (resp.Approvals, *http.Response) {
 	path := "/approvals"
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Get(config, path, body)
+	response, httpResponse, err := Get(config, path, body)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryApprovalsByFolder(config Config, pathId string) (resp.Approvals, error) {
+func QueryApprovalsByFolder(config Config, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/approvals", pathId)
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryApprovalsByTask(config Config, pathId string) (resp.Approvals, error) {
+func QueryApprovalsByTask(config Config, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/approvals", pathId)
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryApprovalsByIds(config Config, pathId []string) (resp.Approvals, error) {
+func QueryApprovalsByIds(config Config, pathId []string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/approvals", strings.Join(pathId, ","))
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateApprovalsByFolder(config Config, params params.CreateApprovals, pathId string) (resp.Approvals, error) {
+func CreateApprovalsByFolder(config Config, params params.CreateApprovals, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/folders/%s/approvals", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Post(config, path, body)
+	response, httpResponse, err := Post(config, path, body)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateApprovalsByTask(config Config, params params.CreateApprovals, pathId string) (resp.Approvals, error) {
+func CreateApprovalsByTask(config Config, params params.CreateApprovals, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/approvals", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Post(config, path, body)
+	response, httpResponse, err := Post(config, path, body)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyApprovalsById(config Config, params params.ModifyApprovals, pathId string) (resp.Approvals, error) {
+func ModifyApprovalsById(config Config, params params.ModifyApprovals, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/approvals/%s", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Put(config, path, body)
+	response, httpResponse, err := Put(config, path, body)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteApprovalsById(config Config, pathId string) (resp.Approvals, error) {
+func DeleteApprovalsById(config Config, pathId string) (resp.Approvals, *http.Response) {
 	path := fmt.Sprintf("/approvals/%s", pathId)
-	response, err := Delete(config, path, nil)
+	response, httpResponse, err := Delete(config, path, nil)
 	ErrorCheck(err)
-	return resp.ApprovalsFromJSON(response)
+	json, err := resp.ApprovalsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

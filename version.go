@@ -1,12 +1,16 @@
 package wrikego
 
 import (
+	"net/http"
+
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryVersion(config Config) (resp.Version, error) {
+func QueryVersion(config Config) (resp.Version, *http.Response) {
 	path := "/version"
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.VersionFromJSON(response)
+	json, err := resp.VersionFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

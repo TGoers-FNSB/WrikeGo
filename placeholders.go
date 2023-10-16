@@ -2,21 +2,26 @@ package wrikego
 
 import (
 	"fmt"
+	"net/http"
 	"strings"
 
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryPlaceholders(config Config) (resp.Placeholders, error) {
+func QueryPlaceholders(config Config) (resp.Placeholders, *http.Response) {
 	path := "/placeholders"
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.PlaceholdersFromJSON(response)
+	json, err := resp.PlaceholdersFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryPlaceholdersByIds(config Config, pathId []string) (resp.Placeholders, error) {
+func QueryPlaceholdersByIds(config Config, pathId []string) (resp.Placeholders, *http.Response) {
 	path := fmt.Sprintf("/placeholders/%s", strings.Join(pathId, ","))
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.PlaceholdersFromJSON(response)
+	json, err := resp.PlaceholdersFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

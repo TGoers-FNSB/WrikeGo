@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,41 +11,51 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryDependenciesByTask(config Config, pathId string) (resp.Dependencies, error) {
+func QueryDependenciesByTask(config Config, pathId string) (resp.Dependencies, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/dependencies", pathId)
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.DependenciesFromJSON(response)
+	json, err := resp.DependenciesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryDependenciesByIds(config Config, pathId []string) (resp.Dependencies, error) {
+func QueryDependenciesByIds(config Config, pathId []string) (resp.Dependencies, *http.Response) {
 	path := fmt.Sprintf("/dependencies/%s", strings.Join(pathId, ","))
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.DependenciesFromJSON(response)
+	json, err := resp.DependenciesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateDependenciesByTask(config Config, params params.CreateDependencies, pathId string) (resp.Dependencies, error) {
+func CreateDependenciesByTask(config Config, params params.CreateDependencies, pathId string) (resp.Dependencies, *http.Response) {
 	path := fmt.Sprintf("/tasks/%s/dependencies", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Post(config, path, body)
+	response, httpResponse, err := Post(config, path, body)
 	ErrorCheck(err)
-	return resp.DependenciesFromJSON(response)
+	json, err := resp.DependenciesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyDependenciesById(config Config, params params.ModifyDependencies, pathId string) (resp.Dependencies, error) {
+func ModifyDependenciesById(config Config, params params.ModifyDependencies, pathId string) (resp.Dependencies, *http.Response) {
 	path := fmt.Sprintf("/dependencies/%s", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Put(config, path, body)
+	response, httpResponse, err := Put(config, path, body)
 	ErrorCheck(err)
-	return resp.DependenciesFromJSON(response)
+	json, err := resp.DependenciesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func DeleteDependenciesById(config Config, pathId string) (resp.Dependencies, error) {
+func DeleteDependenciesById(config Config, pathId string) (resp.Dependencies, *http.Response) {
 	path := fmt.Sprintf("/dependencies/%s", pathId)
-	response, err := Delete(config, path, nil)
+	response, httpResponse, err := Delete(config, path, nil)
 	ErrorCheck(err)
-	return resp.DependenciesFromJSON(response)
+	json, err := resp.DependenciesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

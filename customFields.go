@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,34 +11,42 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func QueryCustomFields(config Config) (resp.CustomFields, error) {
+func QueryCustomFields(config Config) (resp.CustomFields, *http.Response) {
 	path := "/customfields"
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.CustomFieldsFromJSON(response)
+	json, err := resp.CustomFieldsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func QueryCustomFieldsByIds(config Config, pathId []string) (resp.CustomFields, error) {
+func QueryCustomFieldsByIds(config Config, pathId []string) (resp.CustomFields, *http.Response) {
 	path := fmt.Sprintf("/customfields/%s", strings.Join(pathId, ","))
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.CustomFieldsFromJSON(response)
+	json, err := resp.CustomFieldsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func CreateCustomFields(config Config, params params.CreateCustomFields) (resp.CustomFields, error) {
+func CreateCustomFields(config Config, params params.CreateCustomFields) (resp.CustomFields, *http.Response) {
 	path := "/customfields"
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Post(config, path, body)
+	response, httpResponse, err := Post(config, path, body)
 	ErrorCheck(err)
-	return resp.CustomFieldsFromJSON(response)
+	json, err := resp.CustomFieldsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
 
-func ModifyCustomFieldsById(config Config, params params.ModifyCustomFields, pathId string) (resp.CustomFields, error) {
+func ModifyCustomFieldsById(config Config, params params.ModifyCustomFields, pathId string) (resp.CustomFields, *http.Response) {
 	path := fmt.Sprintf("/customfields/%s", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Put(config, path, body)
+	response, httpResponse, err := Put(config, path, body)
 	ErrorCheck(err)
-	return resp.CustomFieldsFromJSON(response)
+	json, err := resp.CustomFieldsFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

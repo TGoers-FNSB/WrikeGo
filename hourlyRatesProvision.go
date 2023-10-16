@@ -2,7 +2,8 @@ package wrikego
 
 import (
 	"fmt"
-	
+	"net/http"
+
 	"strings"
 
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
@@ -10,11 +11,13 @@ import (
 	query "github.com/TGoers-FNSB/go-querystring-wrike/query"
 )
 
-func ModifyHourlyRatesProvisionsByIds(config Config, params params.ModifyHourlyRatesProvision, pathId []string) (resp.HourlyRatesProvision, error) {
+func ModifyHourlyRatesProvisionsByIds(config Config, params params.ModifyHourlyRatesProvision, pathId []string) (resp.HourlyRatesProvision, *http.Response) {
 	path := fmt.Sprintf("/contacts/%s/hourly_rates_provision", strings.Join(pathId, ","))
 	body, err := query.Values(params)
 	ErrorCheck(err)
-	response, err := Put(config, path, body)
+	response, httpResponse, err := Put(config, path, body)
 	ErrorCheck(err)
-	return resp.HourlyRatesProvisionFromJSON(response)
+	json, err := resp.HourlyRatesProvisionFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }

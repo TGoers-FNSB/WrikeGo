@@ -9,35 +9,35 @@ import (
 	params "github.com/TGoers-FNSB/WrikeGo/parameters"
 )
 
-func Get(config Config, path string, params url.Values) ([]byte, error) {
+func Get(config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	return api("GET", config, path, params)
 }
 
-func Post(config Config, path string, params url.Values) ([]byte, error) {
+func Post(config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	return api("POST", config, path, params)
 }
 
-func Put(config Config, path string, params url.Values) ([]byte, error) {
+func Put(config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	return api("PUT", config, path, params)
 }
 
-func Delete(config Config, path string, params url.Values) ([]byte, error) {
+func Delete(config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	return api("DELETE", config, path, params)
 }
 
-func Download(config Config, path string, params url.Values) ([]byte, error) {
+func Download(config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	return api("GET", config, path, params)
 }
 
-func Upload(config Config, path string, params params.UploadAttachment) ([]byte, error) {
+func Upload(config Config, path string, params params.UploadAttachment) ([]byte, *http.Response, error) {
 	return apiAttachment("POST", config, path, params)
 }
 
-func Update(config Config, path string, params params.UploadAttachment) ([]byte, error) {
+func Update(config Config, path string, params params.UploadAttachment) ([]byte, *http.Response, error) {
 	return apiAttachment("PUT", config, path, params)
 }
 
-func api(method string, config Config, path string, params url.Values) ([]byte, error) {
+func api(method string, config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	url := config.BaseUrl + path + "?" + params.Encode()
 	fmt.Println(url)
 
@@ -53,10 +53,10 @@ func api(method string, config Config, path string, params url.Values) ([]byte, 
 
 	fmt.Println(string(response))
 
-	return response, err
+	return response, res, err
 }
 
-func apiAttachment(method string, config Config, path string, params params.UploadAttachment) ([]byte, error) {
+func apiAttachment(method string, config Config, path string, params params.UploadAttachment) ([]byte, *http.Response, error) {
 	url := config.BaseUrl + path
 	if params.Url != "" {
 		url += fmt.Sprintf("?url=%s", params.Url)
@@ -76,28 +76,5 @@ func apiAttachment(method string, config Config, path string, params params.Uplo
 	response, err := io.ReadAll(res.Body)
 	ErrorCheck(err)
 
-	return response, err
+	return response, res, err
 }
-
-// func Download(config Config, path string, params url.Values) ([]byte, error) {
-// 	url := config.BaseUrl + path
-// 	if params != nil {
-// 		url += fmt.Sprintf("?%s", params.Encode())
-// 	}
-
-// 	client := http.Client{}
-// 	req, err := http.NewRequest("GET", url, nil)
-// 	req.Header.Add("Authorization", "Bearer " + config.PermAccessToken)
-// 	res, err := client.Do(req)
-// 	if err != nil {
-// 		fmt.Println("Request Error:", err)
-// 	}
-// 	defer res.Body.Close()
-
-// 	response, err := io.ReadAll(res.Body)
-// 	if err != nil {
-// 		fmt.Println("io.ReadAll Error:", err)
-// 	}
-
-// 	return response, err
-// }

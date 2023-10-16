@@ -1,12 +1,16 @@
 package wrikego
 
 import (
+	"net/http"
+
 	resp "github.com/TGoers-FNSB/WrikeGo/response"
 )
 
-func QueryAccessRoles(config Config) (resp.AccessRoles, error) {
+func QueryAccessRoles(config Config) (resp.AccessRoles, *http.Response) {
 	path := "/access_roles"
-	response, err := Get(config, path, nil)
+	response, httpResponse, err := Get(config, path, nil)
 	ErrorCheck(err)
-	return resp.AccessRolesFromJSON(response)
+	json, err := resp.AccessRolesFromJSON(response)
+	ErrorCheck(err)
+	return json, httpResponse
 }
