@@ -2,6 +2,8 @@ github.com/TGoers-FNSB/go-querystring-wrike v1.3.0 h1:tNX7b82idhU0cVgL+fPdp+88Zj
 github.com/TGoers-FNSB/go-querystring-wrike v1.3.0/go.mod h1:Wdp1HQDxl7yyteVh+Uy2/Tt3ZAZ3HSzg9tqdmckK9zk=
 github.com/TGoers-FNSB/go-querystring-wrike v1.3.1 h1:1fZ50CjBGbQ41mOYX7KFTBbKOEmOC/nU9sjFKADORuY=
 github.com/TGoers-FNSB/go-querystring-wrike v1.3.1/go.mod h1:Wdp1HQDxl7yyteVh+Uy2/Tt3ZAZ3HSzg9tqdmckK9zk=
+github.com/TGoers-FNSB/go-querystring-wrike v1.3.2 h1:1GYx39a8WMLIWJxNs2AmvEWKkzz+rr8oxyMyGaBeCYo=
+github.com/TGoers-FNSB/go-querystring-wrike v1.3.2/go.mod h1:Wdp1HQDxl7yyteVh+Uy2/Tt3ZAZ3HSzg9tqdmckK9zk=
 github.com/google/go-cmp v0.5.2/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/google/go-querystring v1.1.0 h1:AnCroh3fv4ZBgVIf1Iwtovgjaw/GiKJo8M8yD/fhyJ8=
