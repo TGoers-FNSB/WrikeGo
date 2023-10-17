@@ -39,7 +39,6 @@ func Update(config Config, path string, params params.UploadAttachment) ([]byte,
 
 func api(method string, config Config, path string, params url.Values) ([]byte, *http.Response, error) {
 	url := config.BaseUrl + path + "?" + params.Encode()
-	fmt.Println(url)
 
 	client := http.Client{}
 	req, err := http.NewRequest(method, url, nil)

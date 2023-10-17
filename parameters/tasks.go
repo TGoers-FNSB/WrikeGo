@@ -39,8 +39,8 @@ type CreateTasks struct {
 	Description             string           `url:"description,omitempty"`
 	Status                  string           `url:"status,omitempty"`
 	Importance              string           `url:"importance,omitempty"`
-	Dates                   TaskDates        `url:"dates,omitempty,struct,struct"`
-	Shareds                 []string         `url:"shareds,omitempty,slice,slice"`
+	Dates                   TaskDates        `url:"dates,omitempty,struct"`
+	Shareds                 []string         `url:"shareds,omitempty,slice"`
 	Parents                 []string         `url:"parents,omitempty,slice"`
 	Responsibles            []string         `url:"responsibles,omitempty,slice"`
 	ResponsiblePlaceholders []string         `url:"resopnsiblePlaceholders,omitempty,slice"`

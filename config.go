@@ -1,6 +1,5 @@
 package wrikego
 
-
 type Config struct {
 	BaseUrl         string
 	PermAccessToken string
@@ -8,6 +7,9 @@ type Config struct {
 }
 
 func NewConfig(base_url string, perm_access_token string, ssl_verify bool) Config {
+	/*
+		base_url shouldd be set as "https://www.wrike.com/api/v4"
+	*/
 	return Config{
 		BaseUrl:         base_url,
 		PermAccessToken: perm_access_token,
@@ -15,7 +17,7 @@ func NewConfig(base_url string, perm_access_token string, ssl_verify bool) Confi
 	}
 }
 
-func ErrorCheck(err error){
+func ErrorCheck(err error) {
 	if err != nil {
 		panic(err)
 	}
