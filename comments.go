@@ -65,7 +65,7 @@ func CreateCommentsByFolder(config Config, params params.CreateComments, pathId 
 }
 
 func CreateCommentsByTask(config Config, params params.CreateComments, pathId string) (resp.Comments, *http.Response) {
-	path := fmt.Sprintf("/folders/%s/comments", pathId)
+	path := fmt.Sprintf("/tasks/%s/comments", pathId)
 	body, err := query.Values(params)
 	ErrorCheck(err)
 	response, httpResponse, err := Post(config, path, body)
