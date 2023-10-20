@@ -50,8 +50,6 @@ func api(method string, config Config, path string, params url.Values) ([]byte, 
 	response, err := io.ReadAll(res.Body)
 	ErrorCheck(err)
 
-	fmt.Println(string(response))
-
 	return response, res, err
 }
 
